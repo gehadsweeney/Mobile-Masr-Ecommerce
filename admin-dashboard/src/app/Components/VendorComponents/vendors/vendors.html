@@ -1,0 +1,121 @@
+<div class="vendors-page">
+    <!-- Header -->
+    <div class="abd-InventoryHeader">
+        @if (!hasSearch) {
+        <div>
+            <h2>Vendors Management</h2>
+            <p>Manage your vendors list with images and contact info</p>
+        </div>
+        } @else {
+        <h2>
+            Search Results
+            <span class="abd-searchResults fs-3">
+                for "<b>{{ search }}</b>"
+            </span>
+        </h2>
+        <p class="mb-2">
+            {{ vendors.length }} vendor(s) found
+        </p>
+        <!-- ==================== Search Info Bar ================ -->
+        <div class="abd-alertSearchResults d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <i class="bi bi-search me-2"></i>
+                Showing results for
+                <b>"{{ search }}"</b>
+            </div>
+            <button class="abd-clearSearchBtn p-2" (click)="clearSearch()">
+                <i class="bi bi-x-circle me-1"></i>
+                Clear search
+            </button>
+        </div>
+        }
+    </div>
+
+    <!-- Loading -->
+    @if (isLoading) {
+    <div class="reh-center loading">
+        <span class="spinner"></span> Loading...
+    </div>
+    }
+
+    <!-- Error Message -->
+    @if (errorMsg) {
+    <div class="reh-alert">{{ errorMsg }}</div>
+    }
+
+    <!-- Vendors Table -->
+    @if (vendors.length > 0) {
+    <div class="table-responsive">
+        <table class="table table-borderless vendors-table">
+            <thead>
+                <tr class="table-light">
+                    <th>#</th>
+                    <th>NAME</th>
+                    <th>PHONE</th>
+                    <th>ADDRESS</th>
+                    <th>IMAGE</th>
+                    <th>RATING</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (vendor of vendors; track vendor._id; let i = $index) {
+                <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <div class="fw-semibold">{{ vendor.name }}</div>
+                    </td>
+                    <td>
+                        <div class="vend-text-secondary">{{ vendor.phone || '—' }}</div>
+                    </td>
+                    <td>
+                        <div class="vend-text-secondary addr">{{ vendor.address || '—' }}</div>
+                    </td>
+                    <td>
+                        <img [src]="vendor.image" [alt]="vendor.name" class="vend-img rounded" width="80" height="50" />
+                    </td>
+                    <td>
+                        <span class="rating-badge">{{ vendor.rating ?? 0 }}</span>
+                    </td>
+                    <td>
+                        <div class="center gap-2">
+                            <button class="btn-action btn-edit" (click)="vendor._id && editVendor(vendor._id)"
+                                [disabled]="!vendor._id">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <button class="btn-action btn-delete" (click)="openDeleteConfirm(vendor._id!, vendor.name)"
+                                [disabled]="vendor.name.toLowerCase() === 'mobile masr'">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    } @else {
+    <div class="reh-center no-vendors">
+        No vendors found
+    </div>
+    }
+
+    <!-- Delete Confirmation Popup -->
+    @if (showDeleteConfirm) {
+    <div class="popup-overlay">
+        <div class="popup-box">
+            <div class="popup-title text-danger d-flex align-items-center mb-2">
+                <i class="bi bi-exclamation-triangle me-2"></i>
+                Confirm Delete
+            </div>
+            <div class="popup-body mb-2">
+                Are you sure you want to delete <b>{{ deleteTargetName }}</b>?
+            </div>
+            <div class="popup-actions mt-3 d-flex justify-content-end gap-2">
+                <button class="btn btn-secondary" (click)="closeDeleteConfirm()">Cancel</button>
+                <button class="btn btn-danger" (click)="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+    }
+</div>

@@ -1,0 +1,129 @@
+<div [formGroup]="group" class="abd-Prod-Section">
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <i class="fas fa-microchip abd-section-icon"></i>
+        <h2 class="mb-0 abd-section-title">Technical Specifications</h2>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Storage</label>
+            <div class="abd-select-wrapper">
+                <select formControlName="storage" class="abd-select">
+                    <option value="">Select Storage...</option>
+                    @for (storage of storageOptions; track storage) {
+                    <option [value]="storage">{{ storage }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">SIM Card</label>
+            <div class="abd-select-wrapper">
+                <select formControlName="simCard" class="abd-select">
+                    <option value="">Select SIM Type...</option>
+                    @for (sim of simCardOptions; track sim) {
+                    <option [value]="sim">{{ sim }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">SSD</label>
+            <div class="abd-select-wrapper">
+                <select formControlName="ssd" class="abd-select">
+                    <option value="">Select SSD...</option>
+                    @for (ssd of ssdOptions; track ssd) {
+                    <option [value]="ssd">{{ ssd }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">HDD</label>
+            <div class="abd-select-wrapper">
+                <select formControlName="hdd" class="abd-select">
+                    <option value="">Select HDD...</option>
+                    @for (hdd of hddOptions; track hdd) {
+                    <option [value]="hdd">{{ hdd }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <label class="abd-label">RAM</label>
+        <div class="abd-accessories-grid">
+            @for (ram of ramOptions; track ram) {
+            <label class="abd-checkbox-label">
+                <input type="checkbox" [checked]="isRamSelected(ram)" (change)="onRamChange($event, ram)">
+                <span>{{ ram }}</span>
+            </label>
+            }
+        </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Processor (CPU)</label>
+            <input formControlName="processor" class="abd-input" placeholder="e.g. Apple A17 Pro">
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">GPU</label>
+            <input formControlName="gpu" class="abd-input" placeholder="e.g. Apple GPU">
+        </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Screen Size</label>
+            <input formControlName="screenSize" class="abd-input" placeholder="e.g. 6.7 inch">
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Camera</label>
+            <input formControlName="camera" class="abd-input" placeholder="e.g. 48 MP">
+        </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Battery Capacity</label>
+            <input formControlName="batteryCapacity" class="abd-input" placeholder="e.g. 4500 mAh">
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Weight</label>
+            <input formControlName="weight" class="abd-input" placeholder="e.g. 200g">
+        </div>
+    </div>
+
+    <div formGroupName="batteryStatus" class="mt-3">
+        <div class="mb-3">
+            <label class="abd-label">Battery Status (English)</label>
+            <input formControlName="en" class="abd-input" placeholder="e.g. Excellent">
+        </div>
+        <div class="mb-3" dir="rtl">
+            <label class="abd-label">حالة البطارية (العربية)</label>
+            <input formControlName="ar" class="abd-input" placeholder="مثال: ممتازة">
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <label class="abd-label">Accessories</label>
+        <div class="abd-accessories-grid">
+            @for (accessory of accessoriesOptions; track accessory.en) {
+            <label class="abd-checkbox-label">
+                <input type="checkbox" [checked]="isAccessorySelected(accessory.en)"
+                    (change)="onAccessoryChange($event, accessory)">
+                <span>{{ accessory.en }}</span>
+            </label>
+            }
+        </div>
+    </div>
+</div>

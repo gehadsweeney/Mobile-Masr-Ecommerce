@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+
+:root {
+  // Background Colors
+  --bg-body: #fcfcfd;
+  --bg-container: #f2f2f3;
+  --bg-card: #f5f5f5;
+  --bg-light: #f7f7f7;
+
+  // Border Colors
+  --border-light: #e5e7eb;
+  --border-gray: #d4d4d4;
+
+  // Brand Colors
+  --color-orange: #fe5100;
+  --color-orange-dark: #d14817;
+  --color-orange-light: #fff1e6;
+  --color-yellow: #ffe500;
+  --color-yellow-light: #fff7ed;
+
+  // Status Colors
+  --color-success: #15803d;
+  --color-success-light: #e4f2df;
+  --color-danger: #dc2626;
+  --color-danger-light: #fecaca;
+  --color-info: #08308b;
+  --color-info-light: #e0e7ff;
+
+  // Neutral Colors
+  --color-dark: #1f2937;
+  --color-white: #ffffff;
+
+  // Text Colors
+  --text-primary: #424045;
+  --text-secondary: #615d65;
+  --text-muted: #94a3b8;
+
+  // Shadow Colors
+  --shadow-sm: rgba(0, 0, 0, 0.03);
+  --shadow-md: #1018280f;
+}
+
+// Dark Theme
+body.dark {
+  // Background Colors
+  --bg-body: #0f0f0f;
+  --bg-container: #1a1a1a;
+  --bg-card: #1f1f1f;
+  --bg-light: #252525;
+
+  // Border Colors
+  --border-light: #333333;
+  --border-gray: #444444;
+
+  // Brand Colors (keeping same as light theme)
+  --color-orange: #fe5100;
+  --color-orange-dark: #ff6b1b;
+  --color-orange-light: #2a1a10;
+  --color-yellow: #fbbf24;
+  --color-yellow-light: #2a2410;
+
+  // Status Colors
+  --color-success: #22c55e;
+  --color-success-light: #1a3a25;
+  --color-danger: #ef4444;
+  --color-danger-light: #3a1a1a;
+  --color-info: #3b82f6;
+  --color-info-light: #1a2a3a;
+
+  // Neutral Colors
+  --color-dark: #e5e5e5;
+  --color-white: #1a1a1a;
+
+  // Text Colors
+  --text-primary: #f5f5f5;
+  --text-secondary: #b5b5b5;
+  --text-muted: #6b7280;
+
+  // Shadow Colors
+  --shadow-sm: rgba(0, 0, 0, 0.4);
+  --shadow-md: rgba(0, 0, 0, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* transition: all 0.3s ease; */
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--color-dark);
+  /* overflow-x: hidden; */
+  font-size: 1.6rem;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-dark);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}

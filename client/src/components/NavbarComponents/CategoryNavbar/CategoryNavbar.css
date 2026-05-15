@@ -1,0 +1,13 @@
+.abd-CategoryNavbar {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.abd-CategoryNavbar li a:hover {
+    transition: color 0.3s ease;
+    color: var(--orange-color);
+}
+
+.abd-CategoryNavbar .active-link {
+    color: var(--orange-color);
+}

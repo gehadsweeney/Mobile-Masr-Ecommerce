@@ -1,0 +1,24 @@
+.abd-searchContainer {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 2rem;
+  padding: 0.7rem 1.2rem;
+  background-color: var(--bg-body);
+
+  .abd-searchInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.4rem;
+    color: var(--color-dark);
+  }
+  .abd-searchIcon {
+    font-size: 1.6rem;
+    color: var(--color-dark);
+    &:hover {
+      cursor: pointer;
+      color: var(--color-orange-dark);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.abd-ProductsSlider-title {
+    border-bottom: 0.2rem solid var(--orange-color);
+    width: fit-content;
+    padding-bottom: 1rem;
+
+}
+
+.abd-ProductsSlider-see-more {
+    cursor: pointer;
+    color: var(--orange-color);
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: 200;
+    transition: all 0.3s ease;
+}
+
+.abd-ProductsSlider-see-more:hover {
+    color: var(--orange-color-2);
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,59 @@
+.abd-Cart-item {
+    border-radius: 0.5rem;
+
+
+    /* ==========image-container================= */
+    .abd-item-imageContainer {
+        width: 13rem;
+        min-width: 13rem;
+        flex-shrink: 0;
+        /* height: 80px; */
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background-color: var(--cart-color);
+        position: relative;
+
+        .abd-cartItemImage {
+            height: 7rem;
+            object-fit: cover;
+        }
+
+        .abd-cartCondition {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.5rem 0 0.5rem 0;
+            color: var(--white-color);
+            font-size: 1.2rem;
+            text-transform: capitalize;
+        }
+
+        .abd-cartFavoriteIcon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.6rem;
+            color: var(--red-color-light);
+        }
+    }
+
+    /* ==========item details================= */
+    .abd-item-details {
+        flex: 1;
+        min-width: 0;
+
+        .abd-cartItemName {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+    }
+
+    /* .abd-item-actions {
+    } */
+}

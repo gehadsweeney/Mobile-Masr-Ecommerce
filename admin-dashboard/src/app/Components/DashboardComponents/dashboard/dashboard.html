@@ -1,0 +1,383 @@
+<div class="dashboard-container">
+
+  <!-- Error Message -->
+  @if (errorMessage) {
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+  </div>
+  }
+
+  <div *ngIf="!loading">
+
+    <!-- 1. Stats Cards -->
+    <div class="row g-4 mb-4">
+      <!-- Total Revenue -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Total Revenue</p>
+            <div class="stat-icon bg-primary">
+              <i class="bi bi-cash-stack"></i>
+            </div>
+          </div>
+          <p class="stat-value">EGP {{ data.stats.totalRevenue | number:'1.0-0' }}</p>
+          <p class="stat-trend positive">
+            <i class="bi bi-graph-up-arrow"></i> +12.5% vs last month
+          </p>
+        </div>
+      </div>
+
+      <!-- Total Orders -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Total Orders</p>
+            <div class="stat-icon bg-info">
+              <i class="bi bi-bag-check"></i>
+            </div>
+          </div>
+          <p class="stat-value">{{ data.stats.totalOrders | number }}</p>
+          <p class="stat-trend positive">
+            <i class="bi bi-graph-up-arrow"></i> +5.2% vs last month
+          </p>
+        </div>
+      </div>
+
+      <!-- Total Users -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Total Users</p>
+            <div class="stat-icon bg-purple">
+              <i class="bi bi-people"></i>
+            </div>
+          </div>
+          <p class="stat-value">{{ data.stats.totalUsers | number }}</p>
+          <p class="stat-trend positive">
+            <i class="bi bi-graph-up-arrow"></i> +2.4% vs last month
+          </p>
+        </div>
+      </div>
+
+      <!-- Active Carts -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Active Carts</p>
+            <div class="stat-icon bg-warning">
+              <i class="bi bi-cart3"></i>
+            </div>
+          </div>
+          <p class="stat-value">{{ data.stats.activeCarts | number }}</p>
+          <p class="stat-trend negative">
+            <i class="bi bi-graph-down-arrow"></i> -1.2% vs yesterday
+          </p>
+        </div>
+      </div>
+
+      <!-- Website Visitors -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Website Visitors</p>
+            <div class="stat-icon bg-info">
+              <i class="bi bi-eye"></i>
+            </div>
+          </div>
+          <p class="stat-value">{{ data.stats.totalVisits | number }}</p>
+          <p class="stat-trend positive">
+            <i class="bi bi-graph-up-arrow"></i> +15.3% vs last week
+          </p>
+        </div>
+      </div>
+
+      <!-- Today's Sales -->
+      <div class="col-12 col-sm-6 col-lg-4 col-xl">
+        <div class="stat-card">
+          <div class="stat-header">
+            <p class="stat-label">Today's Sales</p>
+            <div class="stat-icon bg-success">
+              <i class="bi bi-calendar-check"></i>
+            </div>
+          </div>
+          <p class="stat-value">EGP {{ data.stats.todaySales | number:'1.0-0' }}</p>
+          <p class="stat-trend positive">
+            <i class="bi bi-graph-up-arrow"></i> +8% vs yesterday
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Charts Section -->
+    <div class="row g-4 mb-4">
+      <!-- Sales Overview (Large) -->
+      <div class="col-12 col-lg-8">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 class="chart-title">Sales Overview</h3>
+              <p class="chart-subtitle">Last 30 Days Performance</p>
+            </div>
+            <div class="d-flex gap-2">
+              <span class="filter-badge" [class.active]="salesFilter === 'daily'"
+                (click)="setSalesFilter('daily')">Daily</span>
+              <span class="filter-badge" [class.active]="salesFilter === 'weekly'"
+                (click)="setSalesFilter('weekly')">Weekly</span>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas baseChart [data]="salesChartData" [options]="salesChartOptions" [type]="salesChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Summary (Smaller) -->
+      <div class="col-12 col-lg-4">
+        <div class="chart-card">
+          <h3 class="chart-title mb-1">Orders Summary</h3>
+          <p class="chart-subtitle mb-4">Weekly Comparison</p>
+          <div class="chart-body">
+            <canvas baseChart [data]="ordersChartData" [options]="ordersChartOptions" [type]="ordersChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Orders & Inventory Split -->
+    <div class="row g-4 mb-4">
+      <!-- Recent Orders Table -->
+      <div class="col-12 col-xl-8">
+        <div class="table-card">
+          <div class="table-header">
+            <h3 class="table-title">Recent Orders</h3>
+            <a routerLink="/admin/orders" class="view-all-link">View All</a>
+          </div>
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (order of data.recentOrders; track order._id) {
+                <tr>
+                  <td class="fw-semibold">#{{ order._id.slice(0, 8) }}</td>
+                  <td>
+                    <div class="customer-info">
+                      <div class="customer-avatar">
+                        {{ order.customerName?.charAt(0) || 'U' }}
+                      </div>
+                      <span>{{ order.customerName || 'Unknown' }}</span>
+                    </div>
+                  </td>
+                  <td class="text-muted">{{ order.date | date:'MMM dd, yyyy' }}</td>
+                  <td class="fw-semibold">EGP {{ order.total | number:'1.0-0' }}</td>
+                  <td>
+                    <span class="status-badge" [ngClass]="{
+                    'status-delivered': order.status === 'Delivered',
+                    'status-processing': order.status === 'Processing',
+                    'status-shipped': order.status === 'Shipped',
+                    'status-pending': order.status === 'Pending'
+                  }">
+                      {{ order.status }}
+                    </span>
+                  </td>
+                  <td>
+                    <div class="action-menu-wrapper">
+                      <button class="action-btn" (click)="toggleDropdown(order._id)">
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+                      @if (openDropdown === order._id) {
+                      <div class="action-dropdown">
+                        <button class="dropdown-item delete-item" (click)="deleteOrder(order._id)">
+                          <i class="bi bi-trash"></i> Delete
+                        </button>
+                      </div>
+                      }
+                    </div>
+                  </td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Best Sellers & Low Stock -->
+      <div class="col-12 col-xl-4">
+        <div class="d-flex flex-column gap-4">
+          <!-- Best Sellers -->
+          <div class="info-card">
+            <h3 class="info-card-title">Best Selling Products</h3>
+            <div class="product-list">
+              @for (product of data.bestSellers; track product._id) {
+              <div class="product-item">
+                <img [src]="product.image" alt="{{ product.name }}" class="product-img">
+                <div class="product-details">
+                  <p class="product-name">{{ product.name }}</p>
+                  <p class="product-sales">{{ product.sales }} sales this week</p>
+                </div>
+                <span class="product-price">EGP {{ product.revenue | number:'1.0-0' }}</span>
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- Low Stock Alerts -->
+          <div class="info-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="info-card-title mb-0">Low Stock Alerts</h3>
+              <span class="alert-badge">{{ data.lowStock.length }} Items</span>
+            </div>
+            <div class="alert-list">
+              @for (product of data.lowStock; track product._id) {
+              <div class="alert-item">
+                <div class="d-flex align-items-center gap-3 flex-grow-1">
+                  <img [src]="product.image" alt="{{ product.name }}" class="alert-img">
+                  <div class="alert-details">
+                    <span class="alert-name">{{ product.name }}</span>
+                    <span class="alert-stock">Only {{ product.stock }} left</span>
+                  </div>
+                </div>
+                <button class="restock-btn" [routerLink]="['/admin/products/details', product._id]">Restock</button>
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- Out of Stock Products -->
+          @if (data.outOfStock && data.outOfStock.length > 0) {
+          <div class="info-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="info-card-title mb-0">Out of Stock</h3>
+              <span class="alert-badge" style="background: #ef4444; color: white;">{{ data.outOfStock.length }}
+                Items</span>
+            </div>
+            <div class="alert-list">
+              @for (product of data.outOfStock; track product._id) {
+              <div class="alert-item">
+                <div class="d-flex align-items-center gap-3 flex-grow-1">
+                  <img [src]="product.image" alt="{{ product.name }}" class="alert-img" style="opacity: 0.6;">
+                  <div class="alert-details">
+                    <span class="alert-name">{{ product.name }}</span>
+                    <span class="alert-stock" style="color: #ef4444;">Out of Stock</span>
+                  </div>
+                </div>
+                <button class="restock-btn" [routerLink]="['/admin/products/details', product._id]"
+                  style="background: #ef4444; border-color: #ef4444;">Urgent Restock</button>
+              </div>
+              }
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Quick Actions & New Users -->
+    <div class="row g-4 mb-4">
+      <!-- Quick Actions -->
+      <div class="col-12 col-lg-8">
+        <div class="actions-card">
+          <h3 class="actions-title">Quick Actions</h3>
+          <div class="actions-grid">
+            <button class="action-card" routerLink="/admin/products/add">
+              <div class="action-icon">
+                <i class="bi bi-plus-lg"></i>
+              </div>
+              <span>Add Product</span>
+            </button>
+            <button class="action-card" routerLink="/admin/categories/add">
+              <div class="action-icon">
+                <i class="bi bi-list"></i>
+              </div>
+              <span>Add Category</span>
+            </button>
+            <button class="action-card" routerLink="/admin/brands/add">
+              <div class="action-icon">
+                <i class="bi bi-bookmark"></i>
+              </div>
+              <span>Add Brand</span>
+            </button>
+            <button class="action-card" routerLink="/admin/vendors/add">
+              <div class="action-icon">
+                <i class="bi bi-person-plus"></i>
+              </div>
+              <span>Add Vendor</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Users -->
+      <div class="col-12 col-lg-4">
+        <div class="users-card">
+          <div class="users-header">
+            <h3 class="users-title">Newest Users</h3>
+            <a routerLink="/admin/users" class="view-all-link">View All Users</a>
+          </div>
+          <div class="users-list">
+            @for (user of data.newUsers; track user._id) {
+            <div class="user-item">
+              <div class="user-avatar"
+                [style.background-image]="user.profilePicture ? 'url(' + user.profilePicture + ')' : 'none'"
+                [style.background-size]="'cover'" [style.background-position]="'center'">
+                @if (!user.profilePicture) {
+                <span>{{ user.name?.charAt(0) || 'U' }}</span>
+                }
+              </div>
+              <div class="user-info">
+                <p class="user-name">{{ user.name }}</p>
+                <p class="user-email">{{ user.email }}</p>
+              </div>
+              <span class="user-role" [class.admin-role]="user.role === 'admin'"
+                [class.customer-role]="user.role === 'customer'">
+                {{ user.role === 'admin' ? 'Admin' : 'Customer' }}
+              </span>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  @if (deletePopupVisible) {
+  <div class="popup-overlay">
+    <div class="popup-box">
+      <div class="popup-title">
+        <i class="bi bi-exclamation-triangle text-danger me-2"></i>
+        Delete Order
+      </div>
+      <div class="popup-body mb-3">
+        Are you sure you want to delete this order?
+      </div>
+      <div class="popup-actions d-flex justify-content-center gap-3">
+        <button class="btn btn-danger px-4" (click)="confirmDeleteOrder()">Delete</button>
+        <button class="btn btn-secondary px-4" (click)="deletePopupVisible = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Loading Spinner -->
+  @if (loading) {
+  <!-- <div class="loading-container">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div> -->
+  <app-loader></app-loader>
+
+  }

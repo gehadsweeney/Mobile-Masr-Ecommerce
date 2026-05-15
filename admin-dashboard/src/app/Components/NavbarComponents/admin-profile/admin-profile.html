@@ -1,0 +1,17 @@
+<div class="admin-profile" [routerLink]="['/admin/settings']">
+
+  @if (picture()) {
+    <div
+      class="avatar"
+      [style.backgroundImage]="'url(' + picture() + ')'"
+    ></div>
+  } @else {
+    <div class="avatar placeholder">{{ initials() }}</div>
+  }
+
+  <div class="info">
+    <div class="name">{{ name() }}</div>
+    <div class="role">{{ email() }}</div>
+  </div>
+
+</div>

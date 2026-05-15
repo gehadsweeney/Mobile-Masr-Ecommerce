@@ -1,0 +1,13 @@
+.abd-logo-svg {
+  width: 90%;
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 2rem auto 4rem auto;
+}
+
+@media (max-width: 768px) {
+  .abd-logo-svg {
+    max-width: 140px;
+  }
+}

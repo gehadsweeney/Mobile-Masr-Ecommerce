@@ -1,0 +1,21 @@
+.mos-products-banners {
+  width: 100%;
+}
+
+.mos-products-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.mos-products-banner-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.mos-products-banner-grid img:hover {
+  transform: scale(1.03);
+}

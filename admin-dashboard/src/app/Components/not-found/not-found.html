@@ -1,0 +1,20 @@
+<div class="not-found-wrapper">
+    <!-- Bubbles -->
+    @for (b of bubbles; track b) {
+    <div class="bubble"></div>
+    }
+
+    <!-- Content -->
+    <div class="main">
+        <h1>404</h1>
+        <p>
+            It looks like you're lost...
+            <br />
+            That's a trouble?
+        </p>
+
+        <button type="button" (click)="goBack()">
+            Go back
+        </button>
+    </div>
+</div>

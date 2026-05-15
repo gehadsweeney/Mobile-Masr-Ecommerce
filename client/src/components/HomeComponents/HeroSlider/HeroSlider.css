@@ -1,0 +1,55 @@
+/* ====== wrapper ====== */
+.geh-hero-slider {
+  width: 100%;
+  background-color: var(--body-bg);
+  overflow: hidden;
+}
+
+
+/* ====== slides ====== */
+.geh-slide {
+  width: 100%;
+  height: auto;
+}
+
+.geh-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  
+}
+
+/* ====== pagination ====== */
+.swiper-pagination-bullet {
+  background: var(--white-color);
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--orange-color);
+}
+
+/* ====== response ====== */
+@media (max-width: 992px) {
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+    .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+@media (max-width: 576px) {
+    .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+}
+

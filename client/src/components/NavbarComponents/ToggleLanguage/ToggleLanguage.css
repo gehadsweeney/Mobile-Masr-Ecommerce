@@ -1,0 +1,44 @@
+.abd-ToggleLanguage {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white-color);
+    border: 0.2rem solid var(--border-color);
+    border-radius: 2rem;
+    position: relative;
+}
+
+.abd-ToggleLanguage::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border-radius: 2rem;
+    background-color: var(--orange-color);
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+}
+
+.abd-ToggleLanguage.active::before {
+    left: 50%;
+}
+
+[dir="rtl"] .abd-ToggleLanguage.active::before {
+    left: 0;
+    right: 50%;
+}
+
+.language-option {
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.language-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--black-color);
+}

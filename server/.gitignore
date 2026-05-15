@@ -1,0 +1,6 @@
+# Node
+/node_modules
+# .evn file
+.env
+# package-lock.json
+package-lock.json

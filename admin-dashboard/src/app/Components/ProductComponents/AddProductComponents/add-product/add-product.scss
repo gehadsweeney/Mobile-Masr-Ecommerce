@@ -1,0 +1,88 @@
+.abd-Prod-Container {
+  padding-bottom: 2rem;
+  margin-block: 2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.abd-Prod-Header {
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: var(--color-info-dark);
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.abd-Prod-Controls {
+  display: flex;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  button {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0.9rem 2rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  .btn-guide {
+    background-color: transparent;
+    color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+
+    i {
+      font-size: 1.6rem;
+    }
+
+    &:hover {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      //   transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(254, 81, 0, 0.3);
+    }
+  }
+
+  .btn-save {
+    background-color: var(--color-orange-dark);
+    color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-orange);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

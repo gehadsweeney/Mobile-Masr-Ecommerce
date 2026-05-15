@@ -1,0 +1,64 @@
+/* Sort Dropdown */
+.mos-sort-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-color: var(--border-color);
+  background: var(--white-color);
+  transition: all 0.3s ease;
+}
+
+.mos-sort-btn:hover {
+  border-color: var(--blue-color);
+  color: var(--blue-color);
+}
+
+.mos-sort-arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.mos-sort-arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.mos-sort-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.mos-sort-option {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: #fff;
+  text-align: left;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.mos-sort-option:last-child {
+  border-bottom: none;
+}
+
+.mos-sort-option:hover {
+  background: #f8f9fa;
+  color: #007bff;
+}
+
+.mos-sort-option.active {
+  background: #e7f3ff;
+  color: #007bff;
+  font-weight: 500;
+}

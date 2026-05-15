@@ -1,0 +1,58 @@
+/* Review Modal (reh-) extracted styles */
+
+.reh-review-modal {
+    max-width: 320px !important;
+    width: 90% !important;
+
+    .reh-rating-label {
+        color: var(--muted-text);
+    }
+
+    .reh-stars-row {
+        font-size: 3rem;
+    }
+
+    .reh-star {
+        cursor: pointer;
+    }
+
+    .reh-review-label {
+        color: var(--muted-text);
+    }
+
+    .reh-review-textarea {
+        border: .2rem solid var(--orange-color) !important;
+        border-radius: 1.2rem !important;
+        padding: 1rem !important;
+        font-size: 1.8rem !important;
+        resize: none;
+        height: 20rem;
+    }
+
+    .reh-cancel-btn {
+        padding: 10px 25px;
+        border-radius: 1.5rem;
+        border: 0.1rem solid var(--gray-color-light);
+        color: var(--muted-text);
+        background: #fff;
+    }
+
+    .reh-post-btn {
+        padding: 10px 35px;
+        border-radius: 12px;
+        background-color: var(--orange-color) !important;
+        color: #fff;
+        border: none;
+    }
+
+    .reh-post-btn:disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+
+}
+
+[dir="rtl"] .modal-header .btn-close {
+    margin-left: auto;
+    margin-right: 0 !important;
+}

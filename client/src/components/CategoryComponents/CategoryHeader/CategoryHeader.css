@@ -1,0 +1,49 @@
+/* Category Header styles */
+.mos-category-header {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mos-category-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Mobile Filter Button */
+.mos-mobile-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--orange-color-2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: auto;
+}
+
+.mos-mobile-filter-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .mos-category-title {
+    font-size: 20px;
+  }
+
+  .mos-category-header {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+}

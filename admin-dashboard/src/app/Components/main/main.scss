@@ -1,0 +1,11 @@
+.abd-mainContent {
+  margin-left: 30rem;
+  // padding: 1rem 0;
+  transition: margin-left 0.3s ease;
+  //   width: 100%;
+  //   background-color: #70889f;
+
+  &.collapsed {
+    margin-left: 6rem;
+  }
+}

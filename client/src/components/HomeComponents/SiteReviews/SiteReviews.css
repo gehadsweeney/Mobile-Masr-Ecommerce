@@ -1,0 +1,50 @@
+.site-reviews-title {
+    border-bottom: 0.2rem solid var(--orange-color);
+    width: fit-content;
+    padding-bottom: 1rem;
+
+}
+
+
+/* Ensure slides align and don't overlap; center cards inside slides */
+.site-reviews-swiper {
+    overflow: hidden;
+    position: relative;
+    /* background-color: var(--yellow-color-light); */
+    /* extra bottom padding so pagination can sit outside the cards */
+    padding-bottom: 5rem !important;
+}
+
+.site-reviews-swiper .swiper-wrapper {
+    /* make wrapper stretch slides to the same height (tallest slide defines height) */
+    align-items: stretch;
+}
+
+.site-reviews-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    /* allow card to stretch to full slide height */
+}
+
+/* place pagination bullets below the cards */
+.site-reviews-swiper .swiper-pagination {
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* bottom: -0.5rem; */
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* inactive/active bullet colors (visible on white background) */
+.site-reviews-swiper .swiper-pagination-bullet {
+    background-color: var(--border-color);
+    opacity: 1;
+}
+
+.site-reviews-swiper .swiper-pagination-bullet-active {
+    transform: scale(1.2);
+    background-color: var(--orange-color);
+}

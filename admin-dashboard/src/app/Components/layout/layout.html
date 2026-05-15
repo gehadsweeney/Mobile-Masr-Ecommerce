@@ -1,0 +1,6 @@
+<div class="d-flex gap-3">
+
+    <app-sidebar (toggleEvent)="onToggleSidebar($event)"></app-sidebar>
+    <app-main [isCollapsed]="sidebarCollapsed" class="w-100"></app-main>
+
+</div>

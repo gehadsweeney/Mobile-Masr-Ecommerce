@@ -1,0 +1,8 @@
+/* .abd-Cart-Page .abd-Cart-items {
+
+} */
+.abd-Cart-Page .abd-CartTotalContainer {
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 5px;
+}

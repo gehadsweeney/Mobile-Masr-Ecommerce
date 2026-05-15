@@ -1,0 +1,49 @@
+.admin-profile {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+	background-color: var(--bg-light);
+	border: 2px solid var(--color-orange);
+	display: grid;
+	place-items: center;
+	color: var(--color-orange);
+	font-weight: 700;
+}
+.info { line-height: 1.1; }
+.name { font-weight: 700; color: var(--text-primary); }
+.role { font-size: 12px; color: var(--text-secondary); text-transform: lowercase; }
+.chev { font-size: 12px; color: var(--text-muted); }
+
+.menu {
+	position: absolute;
+	top: 110%;
+	right: 0;
+	background: var(--color-white);
+	border: 1px solid var(--border-light);
+	border-radius: 10px;
+	box-shadow: 0 10px 30px var(--shadow-md);
+	padding: 8px;
+	display: grid;
+	min-width: 180px;
+	z-index: 50;
+}
+.menu button {
+	text-align: left;
+	background: none;
+	border: 0;
+	padding: 10px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	color: var(--text-primary);
+}
+.menu button:hover { background: var(--bg-light); }
+.menu .danger { color: var(--color-danger); }

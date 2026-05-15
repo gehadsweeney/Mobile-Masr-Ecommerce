@@ -1,0 +1,97 @@
+/* Mobile Filter Sidebar */
+
+/* Mobile Overlay */
+.mos-mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile Sidebar - From LEFT */
+.mos-mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 400px;
+  background: white;
+  z-index: 1050;
+  overflow-y: auto;
+  animation: slideInFromLeft 0.3s ease;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mos-mobile-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+.mos-mobile-sidebar-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.mos-close-btn {
+  background: none;
+  border: none;
+  font-size: 36px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.mos-close-btn:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+
+.mos-mobile-sidebar-content {
+  padding: 20px;
+}
+
+@media (max-width: 576px) {
+  .mos-mobile-sidebar {
+    width: 90%;
+  }
+}

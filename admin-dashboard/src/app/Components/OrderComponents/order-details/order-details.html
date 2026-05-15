@@ -1,0 +1,192 @@
+<div class="order-details-page container-fluid p-4">
+    <!-- Loader -->
+    @if (loading) {
+    <div class="loader-container">
+        <div class="spinner-border text-primary"></div>
+        <p class="text-muted mt-3">Loading order details...</p>
+    </div>
+    }
+
+    <!-- Error Message -->
+    @if (!loading && errorMessage) {
+    <div class="error-alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div>
+            <h5>Error Loading Order</h5>
+            <p>{{ errorMessage }}</p>
+        </div>
+    </div>
+    }
+
+    <!-- Order Content -->
+    @if (!loading && order && !errorMessage) {
+    <div class="order-container">
+        <!-- Header -->
+        <div class="order-header">
+            <div class="header-left">
+                <h1 class="order-title">Order #{{ order._id | slice:0:8 }}</h1>
+                <p class="order-date">{{ order.createdAt | date:'MMMM dd, yyyy - h:mm a' }}</p>
+            </div>
+            <span class="order-status-badge" [ngClass]="getStatusClass(order.orderStatus)">
+                {{ order.orderStatus | uppercase }}
+            </span>
+        </div>
+
+        <div class="row g-5 mt-2 align-items-stretch">
+            <!-- Left: Items List & Totals -->
+            <div class="col-lg-6">
+                <!-- All Items -->
+                <div class="order-section">
+                    <h5 class="section-title">
+                        <i class="bi bi-bag"></i>
+                        Order Items ({{ order.items?.length || 0 }} items)
+                    </h5>
+                    <div class="items-list">
+                        @for (item of order.items || []; track $index) {
+                        <div class="item-card">
+                            <div class="item-image">
+                                @if (item.product?.images?.[0] || item.product?.image) {
+                                <img [src]="item.product?.images?.[0] || item.product?.image"
+                                    alt="{{ item.product?.name }}" class="product-img">
+                                } @else {
+                                <div class="no-image-placeholder">
+                                    <i class="bi bi-image"></i>
+                                    <span>No Image</span>
+                                </div>
+                                }
+                            </div>
+                            <div class="item-details">
+                                <h6 class="product-name">{{ item.product?.name || 'Product' }}</h6>
+                                <p class="product-id">SKU: {{ item.product?._id | slice:0:8 }}</p>
+                                <div class="item-meta">
+                                    <div class="meta-item">
+                                        <span class="label">Qty</span>
+                                        <span class="value">{{ item.quantity }}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="label">Price</span>
+                                        <span class="value">{{ item.price | currency:'EGP':'symbol':'1.0-2' }}</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="label">Subtotal</span>
+                                        <span class="value total">{{ (item.price * item.quantity) |
+                                            currency:'EGP':'symbol':'1.0-2' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Cart Totals -->
+                <div class="order-section">
+                    <h5 class="section-title">
+                        <i class="bi bi-receipt"></i>
+                        Cart Totals
+                    </h5>
+                    <div class="totals-box">
+                        <div class="total-row">
+                            <span class="label">Subtotal:</span>
+                            <span class="value">{{ (order.subtotal ?? (order.totalPrice ?? order.totalAmount)) |
+                                currency:'EGP':'symbol':'1.0-2' }}</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="label">Shipping:</span>
+                            <span class="value">{{ (order.shippingFees ?? 100) | currency:'EGP':'symbol':'1.0-2'
+                                }}</span>
+                        </div>
+                        <div class="total-row border-top pt-3 mt-3">
+                            <span class="label fw-bold">Total price:</span>
+                            <span class="value-total">{{ (order.totalPrice ?? order.totalAmount) |
+                                currency:'EGP':'symbol':'1.0-2' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Summary Card -->
+            <div class="col-lg-5">
+                <!-- Summary Card -->
+                <div class="summary-card">
+                    <h5 class="summary-title">
+                        <i class="bi bi-info-circle"></i>
+                        Summary
+                    </h5>
+
+                    <!-- Order ID -->
+                    <div class="summary-row">
+                        <span class="label">Order ID</span>
+                        <span class="value-order-id">#{{ order._id | slice:0:8 }}</span>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="summary-row">
+                        <span class="label">Date</span>
+                        <span class="value">{{ order.createdAt | date:'dd MMM yyyy' }}</span>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="summary-row pb-3 border-bottom">
+                        <span class="label">Total</span>
+                        <span class="value-total">{{ (order.totalPrice ?? order.totalAmount) |
+                            currency:'EGP':'symbol':'1.0-2' }}</span>
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div class="summary-section mt-4">
+                        <h6 class="section-label mb-3">
+                            <i class="bi bi-geo-alt"></i>
+                            Shipping Address
+                        </h6>
+                        <p class="address-text">
+                            {{ order.shippingAddress?.fullName || order.user?.name || 'Guest' }}<br>
+                            {{ order.shippingAddress?.street }}<br>
+                            {{ order.shippingAddress?.city }}, {{ order.shippingAddress?.governorate }}
+                        </p>
+                    </div>
+
+                    <!-- Payment -->
+                    <div class="summary-section mt-4">
+                        <h6 class="section-label mb-3">
+                            <i class="bi bi-credit-card"></i>
+                            Payment
+                        </h6>
+                        <p class="payment-text mb-2">{{ order.paymentMethod || 'N/A' | uppercase }}</p>
+                        <span class="payment-badge" [ngClass]="getPaymentStatusClass(order.paymentStatus)">
+                            {{ order.paymentStatus || 'unknown' | uppercase }}
+                        </span>
+                    </div>
+
+                    <!-- Expected Date -->
+                    <div class="summary-section mt-4 mb-4">
+                        <h6 class="section-label mb-2">
+                            <i class="bi bi-calendar-check"></i>
+                            Expected Delivery
+                        </h6>
+                        <p class="delivery-date">{{ order.createdAt | date:'dd MMM yyyy' }}</p>
+                    </div>
+
+                    <!-- Status Update -->
+                    <div class="status-section mt-4">
+                        <label class="status-label mb-2" for="order-status-select">
+                            <i class="bi bi-pencil"></i>
+                            Update Status
+                        </label>
+                        <div class="abd-select-wrapper abd-select--sm w-100">
+                            <select #statusSelect id="order-status-select" class="abd-select"
+                                [ngModel]="order.orderStatus" (change)="changeStatus(statusSelect.value)">
+                                <option [value]="order.orderStatus" selected>{{ order.orderStatus | uppercase }}
+                                </option>
+                                <option *ngFor="let s of getAllowedStatuses(order)" [value]="s">{{ s |
+                                    uppercase }}</option>
+                            </select>
+                            <i class="bi bi-chevron-down abd-select-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

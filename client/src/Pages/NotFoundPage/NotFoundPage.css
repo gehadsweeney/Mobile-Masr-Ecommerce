@@ -1,0 +1,33 @@
+.heb-notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 90vh;
+  text-align: center;
+}
+
+.heb-notfound-image {
+  max-width: 50%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.heb-notfound-button {
+  width: 150px;
+  max-width: 50%;
+}
+
+/* Responsive للموبايل والتابلت */
+@media (max-width: 768px) {
+  .heb-notfound-image {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .heb-notfound-image {
+    max-width: 90%;
+  }
+}

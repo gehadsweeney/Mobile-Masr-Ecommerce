@@ -1,0 +1,58 @@
+<div class="reviews-container">
+
+  <!-- Loading -->
+  <div class="state loading" [hidden]="!isLoading">
+    <span class="spinner"></span>
+    <p>Loading reviews...</p>
+  </div>
+
+  <!-- Error -->
+  <div class="state error" [hidden]="!errorMsg">
+    {{ errorMsg }}
+  </div>
+
+  <!-- Reviews -->
+  <div class="reviews-grid" [hidden]="reviews.length === 0">
+    @for (review of reviews; track review._id) {
+    <div class="review-card">
+      <div class="reh-review-top">
+        <!-- ---------------------info-------------------- -->
+        <div class="review-header">
+          <div class="avatar">{{ review.name.charAt(0) }}</div>
+          <div class="info">
+            <h4>{{ review.name }}</h4>
+            <div class="rating">⭐ {{ review.rating }}/5</div>
+          </div>
+        </div>
+        <!-- -------------------comment-------------------- -->
+        <p class="comment">{{ review.comment }}</p>
+      </div>
+
+      <div class="review-footer">
+        <span>User: {{ getUserName(review.user) }}</span>
+        <span>{{ review.createdAt ? (review.createdAt | date:'mediumDate') : 'No date' }}</span>
+        <button class="delete-btn" (click)="openDeleteConfirm(review._id!, review.name)">Delete</button>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Empty -->
+  <div class="state empty" [hidden]="isLoading || reviews.length > 0">
+    😕 No reviews available
+  </div>
+
+  <!-- Delete Confirmation Popup -->
+  @if (showDeleteConfirm) {
+  <div class="delete-confirm">
+    <div class="delete-box">
+      <p>Are you sure you want to delete <strong>{{ deleteTargetName }}</strong>?</p>
+      <div class="actions">
+        <button class="confirm" (click)="confirmDelete()">Yes, Delete</button>
+        <button class="cancel" (click)="closeDeleteConfirm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+  }
+
+</div>

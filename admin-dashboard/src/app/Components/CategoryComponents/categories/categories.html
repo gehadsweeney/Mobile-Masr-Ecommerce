@@ -1,0 +1,161 @@
+<div class="mos-categories-page">
+    <!-- Page Header -->
+    <div class="abd-InventoryHeader">
+        @if (!hasSearch) {
+        <div>
+            <h2>Categories Management</h2>
+            <p>Manage your store's categories and images</p>
+        </div>
+        } @else {
+        <h2>
+            Search Results
+            <span class="abd-searchResults fs-3">
+                for "<b>{{ search }}</b>"
+            </span>
+        </h2>
+        <p class="mb-2">
+            {{ categories.length }} category(s) found
+        </p>
+        <!-- ==================== Search Info Bar ================ -->
+        <div class="abd-alertSearchResults d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <i class="bi bi-search me-2"></i>
+                Showing results for
+                <b>"{{ search }}"</b>
+            </div>
+            <button class="abd-clearSearchBtn p-2" (click)="clearSearch()">
+                <i class="bi bi-x-circle me-1"></i>
+                Clear search
+            </button>
+        </div>
+        }
+    </div>
+
+    <!-- Loading State -->
+    @if (loading) {
+    <div class="mos-loading-container">
+        <div class="spinner-border text-primary"></div>
+        <p>Loading categories...</p>
+    </div>
+    }
+
+
+    <!-- Categories Grid -->
+    @if (!loading && categories.length > 0) {
+    <div class="mos-categories-grid">
+        @for (cat of categories; track cat._id) {
+        <div class="mos-category-card">
+            <div class="mos-card-image center">
+                <img [src]="cat.image" [alt]="cat.name" loading="lazy">
+                <div class="mos-card-overlay">
+                    <div class="mos-action-buttons">
+                        <button class="mos-btn-icon mos-btn-edit" (click)="openEditModal(cat)" title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="mos-btn-icon mos-btn-delete" (click)="openDeleteConfirm(cat._id!, cat.name)"
+                            title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mos-card-body">
+                <h4>{{ cat.name }}</h4>
+            </div>
+        </div>
+        }
+    </div>
+    }
+
+    <!-- Edit Modal -->
+    @if (showEditModal && editingCategory) {
+    <div class="mos-modal-overlay" (click)="closeEditModal()">
+        <div class="mos-modal-content" (click)="$event.stopPropagation()">
+            <div class="mos-modal-header">
+                <h2>Edit Category</h2>
+                <button class="mos-btn-close" (click)="closeEditModal()">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+
+            <form [formGroup]="editForm" (ngSubmit)="submitEdit()" class="mos-edit-form">
+                <div class="mos-form-group">
+                    <label for="editName">Category Name</label>
+                    <input id="editName" type="text" class="form-control" formControlName="name"
+                        placeholder="Enter category name"
+                        [class.is-invalid]="editForm.get('name')?.invalid && editForm.get('name')?.touched">
+                    @if (editForm.get('name')?.invalid && editForm.get('name')?.touched) {
+                    <small class="mos-error-text">Name must be at least 3 characters</small>
+                    }
+                </div>
+
+                <div class="mos-form-group">
+                    <label for="editImage">Category Image</label>
+                    <input id="editImage" type="file" class="form-control" accept="image/*"
+                        (change)="onEditImageSelected($event)">
+                </div>
+
+                @if (uploadingEdit) {
+                <small>Uploading image...</small>
+                }
+
+                <!-- Image Preview - Same as Add Category -->
+                @if (editImagePreview) {
+                <div class="mos-image-preview-section">
+                    <div class="mos-preview-header">
+                        <h6>Preview</h6>
+                        <button type="button" class="mos-btn-remove" (click)="removeEditImage()" title="Remove image">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                    </div>
+                    <div class="mos-image-preview">
+                        <img [src]="editImagePreview" alt="Category preview">
+                    </div>
+                </div>
+                }
+
+                <div class="mos-modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeEditModal()"
+                        [disabled]="submitting || uploadingEdit">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="editForm.invalid || submitting || uploadingEdit || !hasEditChanges()">
+                        @if (submitting) {
+                        <span class="spinner-border spinner-border-sm me-2"></span>
+                        Updating...
+                        } @else {
+                        Update
+                        }
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    }
+
+    <!-- Delete Confirmation Dialog -->
+    @if (showDeleteConfirm && deleteTargetId) {
+    <div class="mos-modal-overlay" (click)="closeDeleteConfirm()">
+        <div class="mos-modal-content mos-modal-small" (click)="$event.stopPropagation()">
+            <div class="mos-modal-header">
+                <h2>Confirm Delete</h2>
+            </div>
+            <div class="mos-modal-body">
+                <div class="mos-delete-icon">
+                    <i class="bi bi-exclamation-triangle"></i>
+                </div>
+                <p>Are you sure you want to delete <strong>{{ deleteTargetName }}</strong>?</p>
+            </div>
+            <div class="mos-modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeDeleteConfirm()">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-danger mos-btn-danger" (click)="confirmDelete()">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+    }
+</div>

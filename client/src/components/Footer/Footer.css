@@ -1,0 +1,98 @@
+.mos-footer {
+  background: #fafafa;
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.mos-footer-top {
+  padding: 5rem 0 4rem;
+}
+
+.mos-footer-brand {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.mos-footer-desc {
+  color: #666;
+  margin: 1.5rem 0 2.5rem;
+  max-width: 340px;
+  line-height: 1.7;
+}
+
+.mos-footer h6 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+}
+
+.mos-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mos-footer ul li {
+  margin-bottom: 1rem;
+}
+
+.mos-footer a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.mos-footer a:hover {
+  color: #000;
+}
+
+.mos-footer-social {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 2.3rem;
+}
+
+.mos-footer-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #555;
+}
+
+.mos-footer-small {
+  font-size: 1.35rem;
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+.mos-footer-bottom {
+  border-top: 1px solid #e5e5e5;
+  padding: 1.8rem 0;
+  font-size: 1.2rem;
+  color: #777;
+  /* margin-top: 3rem; */
+}
+
+/* Responsive */
+@media (max-width: 766px) {
+  .mos-footer {
+    text-align: center;
+  }
+
+  .mos-footer-social {
+    justify-content: center;
+  }
+
+  .mos-footer-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mos-footer-bottom {
+    text-align: center;
+  }
+
+  .mos-footer-features li {
+    justify-content: center;
+  }
+}

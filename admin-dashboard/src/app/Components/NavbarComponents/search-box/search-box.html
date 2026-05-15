@@ -1,0 +1,9 @@
+@if (showSearchBox) {
+<div class="abd-searchContainer d-flex align-items-center gap-2">
+    <input type="text" class="abd-searchInput" placeholder="Search..." [(ngModel)]="searchValue"
+        (keydown.enter)="onSearch()" />
+    <i class="bi bi-search abd-searchIcon" role="button" (click)="onSearch()"></i>
+</div>
+} @else {
+<div class="abd-search-placeholder text-secondary"></div>
+}

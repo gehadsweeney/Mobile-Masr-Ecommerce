@@ -1,0 +1,81 @@
+<div [formGroup]="group" class="abd-Prod-Section">
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <i class="bi bi-cash-stack abd-section-icon"></i>
+        <h2 class="mb-0 abd-section-title">Pricing & Inventory</h2>
+    </div>
+
+    <div class="mb-3">
+        <label class="abd-label">Base Price ($) <span class="text-danger">*</span></label>
+        <div class="abd-input-group">
+            <span class="abd-input-prefix">$</span>
+            <input type="number" formControlName="price" class="abd-input with-prefix" placeholder="0.00" min="0"
+                step="0.01">
+        </div>
+        @if (group.get('price')?.invalid && group.get('price')?.touched) {
+        <div class="abd-error">
+            @if (group.get('price')?.errors?.['required']) {
+            <small>Price is required</small>
+            }
+            @if (group.get('price')?.errors?.['min']) {
+            <small>Price must be greater than or equal to 0</small>
+            }
+        </div>
+        }
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Discount (%)</label>
+            <input type="number" formControlName="discount" class="abd-input" placeholder="0" min="0" max="100">
+            @if (group.get('discount')?.invalid && group.get('discount')?.touched) {
+            <div class="abd-error">
+                @if (group.get('discount')?.errors?.['min']) {
+                <small>Discount must be at least 0</small>
+                }
+                @if (group.get('discount')?.errors?.['max']) {
+                <small>Discount cannot exceed 100%</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Stock Quantity</label>
+            <input type="number" formControlName="stock" class="abd-input" placeholder="0" min="0">
+            @if (group.get('stock')?.invalid && group.get('stock')?.touched) {
+            <div class="abd-error">
+                @if (group.get('stock')?.errors?.['min']) {
+                <small>Stock must be at least 0</small>
+                }
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+        <label class="abd-label">SKU Code <span class="text-danger">*</span></label>
+        <div class="abd-sku-group">
+            <input type="text" formControlName="skuCode" class="abd-input" placeholder="PROD-001">
+            <button type="button" class="abd-generate-btn" (click)="generateSKU()">
+                <i class="fas fa-sync-alt"></i> Generate
+            </button>
+        </div>
+        @if (group.get('skuCode')?.invalid && group.get('skuCode')?.touched) {
+        <div class="abd-error">
+            @if (group.get('skuCode')?.errors?.['required']) {
+            <small>SKU Code is required</small>
+            }
+        </div>
+        }
+    </div>
+
+    <div formGroupName="guarantee">
+        <div class="mb-3">
+            <label class="abd-label">Guarantee (English)</label>
+            <input formControlName="en" class="abd-input" placeholder="e.g. 1 Year Warranty">
+        </div>
+        <div class="mb-3" dir="rtl">
+            <label class="abd-label">الضمان (Arabic)</label>
+            <input formControlName="ar" class="abd-input" placeholder="مثال: ضمان سنة واحدة">
+        </div>
+    </div>
+</div>

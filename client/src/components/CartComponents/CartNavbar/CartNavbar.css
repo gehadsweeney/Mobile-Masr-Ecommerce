@@ -1,0 +1,32 @@
+.abd-CartNavbar {
+    margin-bottom: 2rem;
+    background-color: var(--container-bg);
+    /* padding: 1rem 2rem; */
+    /* border-radius: 0.5rem; */
+    border-bottom: 1px solid var(--orange-color-2);
+
+}
+
+.abd-CartNavbar .abd-cart-link {
+    color: var(--muted-text);
+    padding: 1.5rem 2rem;
+}
+
+.abd-CartNavbar .abd-cart-link.active {
+    border-bottom: 3px solid var(--orange-color);
+    color: var(--orange-color);
+    font-weight: 600;
+}
+
+
+
+@media (max-width: 768px) {
+    .abd-CartNavbar {
+        margin-bottom: 1rem;
+    }
+
+    .abd-CartNavbar .abd-cart-link {
+        padding: 1rem;
+        font-size: 1.4rem;
+    }
+}

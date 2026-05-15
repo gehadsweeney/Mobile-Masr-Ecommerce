@@ -1,0 +1,56 @@
+<form #brandForm="ngForm" (ngSubmit)="submitForm(brandForm)" class="reh-form-card">
+  <h2>{{ editing ? 'Edit Brand' : 'Add New Brand' }}</h2>
+
+  <!-- Brand Name -->
+  <div class="reh-field">
+    <label>Brand Name <span>*</span></label>
+
+    <input type="text" name="name" [(ngModel)]="formBrand.name" required placeholder="e.g. Samsung, Apple" />
+
+    @if (brandForm.submitted && !formBrand.name) {
+    <small class="reh-error">Brand name is required</small>
+    }
+  </div>
+
+  <!-- Brand Image -->
+  <div class="reh-field">
+    <label>Brand Image <span>*</span></label>
+
+    <div class="reh-upload-box">
+      <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+
+      @if (!formBrand.image) {
+      <div class="reh-upload-content">
+        <div class="icon">☁</div>
+        <p>Drag and drop your image here</p>
+        <span>or</span>
+        <button type="button">Browse photo</button>
+      </div>
+      }
+
+      @if (uploading) {
+      <small class="reh-info">Uploading image...</small>
+      }
+
+      @if (formBrand.image) {
+      <div class="image-row">
+        <span>Image uploaded</span>
+        <button type="button" (click)="removeImage()">✕</button>
+      </div>
+      }
+    </div>
+
+    @if (brandForm.submitted && !formBrand.image) {
+    <small class="reh-error">Image is required</small>
+    }
+  </div>
+
+  <!-- Actions -->
+  <div class="reh-actions">
+    <button type="submit" class="primary" [disabled]="uploading || (editing && !hasChanges())">
+      {{ editing ? 'Update Brand' : 'Add Brand' }}
+    </button>
+
+    <button type="reset" class="secondary">Reset</button>
+  </div>
+</form>

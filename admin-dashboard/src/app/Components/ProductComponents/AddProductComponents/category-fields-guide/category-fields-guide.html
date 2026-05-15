@@ -1,0 +1,37 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2><i class="bi bi-info-circle"></i> Category Fields Guide</h2>
+            <button class="close-btn" (click)="onClose()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            @for (category of categories; track category.name) {
+            <div class="category-card">
+                <div class="category-header">
+                    <h3>{{ category.name }}</h3>
+                    <span class="field-count">{{ category.fields.length }} Fields</span>
+                </div>
+
+                <div class="fields-grid">
+                    @for (field of category.fields; track field.name) {
+                    <div class="field-item" [class.required]="field.required">
+                        <div class="field-info">
+                            <span class="field-name">
+                                {{ field.name }}
+                                @if (field.required) {
+                                <span class="required-badge">*</span>
+                                }
+                            </span>
+                            <span class="field-type">{{ field.type }}</span>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

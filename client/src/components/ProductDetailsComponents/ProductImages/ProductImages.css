@@ -1,0 +1,194 @@
+.abd-product-images .abd-product-main-image {
+    border-radius: 0.8rem;
+    width: 100%;
+    overflow: hidden;
+    height: 40rem;
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 1rem var(--border-color);
+    border: 0.2rem solid var(--border-color);
+    position: relative;
+}
+
+.abd-product-images .abd-product-main-image img {
+    /* width: 100%; */
+    height: 55%;
+    /* object-fit: contain; */
+}
+
+.abd-product-images .abd-product-main-image img:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.abd-product-main-image .abd-simCard {
+    position: absolute;
+    left: 2rem;
+    bottom: 5rem;
+    padding: 0rem 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 800;
+    border: 2px solid var(--black-color);
+    border-top-left-radius: 0.7rem;
+    box-shadow: -0.3rem -0.3rem 0rem var(--orange-color);
+    color: var(--orange-color);
+}
+
+.abd-product-main-image .abd-prodType {
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 0 0.8rem;
+    color: var(--white-color);
+    /* box-shadow: 0rem 0rem 0.3rem var(--gray-color-light); */
+}
+
+.abd-product-main-image .abd-prodGuarantee {
+    position: absolute;
+    right: 0rem;
+    bottom: 0rem;
+    left: 0rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 1rem 1rem 0 0;
+    background-color: var(--green-color-light);
+    color: var(--green-color);
+    border-top: 2px solid var(--green-color);
+}
+
+.abd-product-main-image .abd-BatteryStatus {
+    position: absolute;
+    right: 0rem;
+    bottom: 5rem;
+    padding: 0.3rem 0.3rem;
+    font-size: 1.2rem;
+    background-color: var(--green-color);
+    color: var(--white-color);
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.abd-product-main-image .abd-prodDiscount {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-radius: 0.8rem 0 0.8rem 0;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    /* box-shadow: 0rem 0rem 0.3rem var(--gray-color-light); */
+}
+
+.abd-product-main-image .abd-ProdIcons {
+    /*d-flex flex-column position-absolute start-0 top-50*/
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 5rem;
+    left: 1rem;
+    gap: 1rem;
+
+    .abd-ProdIcon {
+        color: var(--gray-color-light);
+        background-color: var(--white-color);
+        border: 0.2rem solid var(--border-color);
+        /* padding: 0.5rem; */
+        width: 3.5rem;
+        height: 3.5rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .abd-ProdIcon:nth-child(1):hover {
+        color: var(--red-color);
+        background-color: var(--red-color-light);
+        cursor: pointer;
+    }
+
+    .abd-ProdIcon:nth-child(2):hover {
+        color: var(--blue-color);
+        background-color: var(--blue-color-light);
+        cursor: pointer;
+    }
+}
+
+.abd-product-main-image .abd-ProdIcons .abd-ProdIcon .abd-ProdShareOptions {
+    position: absolute;
+    top: 4rem;
+    right: 50%;
+    transform: translateX(50%);
+    background-color: var(--white-color);
+    border: 0.2rem solid var(--border-color);
+    color: var(--gray-color-light);
+    border-radius: 1rem;
+    /* box-shadow: 0rem 0rem 0.3rem var(--gray-color-light); */
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+    font-size: 2rem;
+
+    .abd-ProdWhatsappIcon:hover {
+        color: var(--green-color);
+        cursor: pointer;
+    }
+
+    .abd-ProdFacebookIcon:hover {
+        color: var(--blue-color);
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+.abd-product-images .abd-product-thumbnails-container {
+    width: 100%;
+    /* border: 1px solid var(--border-color); */
+    overflow: hidden;
+    /* hide extra thumbnails that overflow the visible area */
+
+}
+
+.abd-product-images .abd-product-thumbnail {
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 1rem var(--border-color);
+    border-radius: 0.8rem;
+    /* padding: 1rem; */
+    width: 10rem;
+    height: 10rem;
+    cursor: pointer;
+    transition: 0.3s ease all;
+    border: 0.2rem solid var(--border-color);
+
+}
+
+.abd-product-images .abd-product-thumbnail.selected {
+    border: 0.2rem solid var(--orange-color);
+}
+
+.abd-product-images .abd-product-thumbnail:hover {
+    /* border: 0.2rem solid var(--orange-color); */
+    box-shadow: 0rem 0rem 0.3rem var(--gray-color-light);
+    transform: translateY(-3px);
+}
+
+/* Make swiper slides size to their content and not stretch — supports slidesPerView: 'auto' */
+.abd-product-thumbnails-container .swiper-slide {
+    flex: 0 0 auto;
+    width: auto !important;
+}
+
+.abd-product-images .abd-product-thumbnail img {
+    /* width: 6rem; */
+    height: 60%;
+    /* border-radius: 0.8rem; */
+    overflow: hidden;
+    border: 0.2rem solid transparent;
+}

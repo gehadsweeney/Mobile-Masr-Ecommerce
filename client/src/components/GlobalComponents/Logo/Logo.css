@@ -1,0 +1,90 @@
+/* Logo SVG Responsive Styles */
+.abd-logo-svg {
+    width: 185px;
+    height: auto;
+    display: block;
+}
+
+/* Tablet and smaller */
+@media (max-width: 992px) {
+    .abd-logo-svg {
+        width: 150px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .abd-logo-svg {
+        width: 120px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .abd-logo-svg {
+        width: 100px;
+    }
+}
+
+/* .abd-Logo {
+    font-size: 3.5rem;
+    letter-spacing: 0.1rem;
+    font-family: "Merienda", cursive;
+    font-weight: bolder;
+    position: relative;
+}
+
+.abd-Logo .m-char {
+    font-family: "Merienda", cursive;
+    color: var(--white-color);
+    position: relative;
+    z-index: 1;
+}
+
+.abd-Logo .m-char::before {
+    content: "";
+    position: absolute;
+    background-color: var(--orange-color);
+    width: 3.5rem;
+    height: 100%;
+    clip-path: polygon(0% 20%, 90% 4%, 90% 98%, 0% 75%);
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.abd-LogoIcon {
+    margin-right: -1rem;
+    font-size: 6rem;
+    color: var(--blue-color);
+}
+
+@media (max-width: 768px) {
+    .abd-Logo {
+        font-size: 2.5rem;
+    }
+
+    .abd-Logo .m-char::before {
+        width: 2.5rem;
+    }
+
+    .abd-LogoIcon {
+        font-size: 4rem;
+        margin-right: -0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .abd-Logo {
+        font-size: 2rem;
+    }
+
+    .abd-Logo .m-char::before {
+        width: 2rem;
+    }
+
+    .abd-LogoIcon {
+        font-size: 3rem;
+        margin-right: -0.3rem;
+    }
+} */

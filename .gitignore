@@ -1,0 +1,93 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Build outputs
+dist/
+build/
+*.js.map
+*.css.map
+out/
+
+# Angular specific
+admin-dashboard/dist/
+admin-dashboard/.angular/
+
+# Vite specific
+client/.vite/
+
+# Cache
+.cache/
+.eslintcache
+.node_modules_cache
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vim/
+.emacs*
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+
+# Local development
+.local/
+.vscode-settings/
+.settings/
+
+# Security
+*.pem
+*.key
+*.crt
+.ssh/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+mongo-dump/
+
+# Cloudinary/Upload
+uploads/
+public/uploads/
+
+# Node
+.node-gyp/
+
+# Misc
+dist-ssr/
+.turbo/

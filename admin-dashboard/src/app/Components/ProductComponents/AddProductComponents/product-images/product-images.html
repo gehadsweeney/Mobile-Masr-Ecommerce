@@ -1,0 +1,48 @@
+<div [formGroup]="group" class="abd-Prod-Section">
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <i class="fas fa-images abd-section-icon"></i>
+        <h2 class="mb-0 abd-section-title">Product Images</h2>
+    </div>
+
+    <!-- Upload Area -->
+    <div class="abd-upload-area" (click)="triggerFileInput()">
+        <input type="file" id="fileInput" multiple accept="image/*" (change)="onFilesSelected($event)"
+            style="display: none">
+
+        <div class="abd-upload-content">
+            <div class="abd-upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <h3>Click to upload</h3>
+            <p>or drag and drop</p>
+            <small>SVG, PNG, JPG or GIF (max. 3MB)</small>
+        </div>
+    </div>
+
+    <!-- Uploading Indicator -->
+    @if (uploading) {
+    <div class="abd-uploading-indicator">
+        <i class="fas fa-spinner fa-spin"></i>
+        <span>Uploading images...</span>
+    </div>
+    }
+
+    <!-- Uploaded Images List -->
+    @if (imagesArray.length > 0) {
+    <div class="abd-images-list">
+        @for (image of imagesArray; track $index) {
+        <div class="abd-image-item">
+            <div class="abd-image-thumbnail">
+                <img [src]="image" alt="Product image">
+            </div>
+            <div class="abd-image-info">
+                <span class="abd-image-name">image_{{ $index + 1 }}</span>
+            </div>
+            <button type="button" class="abd-remove-btn" (click)="removeImage($index)">
+                <i class="fas fa-times-circle"></i>
+            </button>
+        </div>
+        }
+    </div>
+    }
+</div>

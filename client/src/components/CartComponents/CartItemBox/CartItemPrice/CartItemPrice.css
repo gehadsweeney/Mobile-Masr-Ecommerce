@@ -1,0 +1,28 @@
+.abd-item-details .abd-CartItemPrice {
+    .abd-CartPriceDisc {
+        color: var(--green-color);
+        /* background-color: var(--green-color-light); */
+        width: fit-content;
+        font-size: 1.4rem;
+        /* font-weight: 700; */
+
+        /* padding: 0.5rem 1rem; */
+        /* border-radius: 2rem; */
+    }
+
+    .abd-CartPriceOriginal {
+        font-size: 1.4rem;
+    }
+
+    .abd-CartPriceSubtotal {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-block: 1rem;
+        width: fit-content;
+        border-radius: 2rem;
+        padding: 0.5rem 1rem;
+        color: var(--blue-color);
+        background-color: var(--blue-color-light);
+
+    }
+}

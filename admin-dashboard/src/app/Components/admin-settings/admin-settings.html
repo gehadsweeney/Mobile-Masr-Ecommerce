@@ -1,0 +1,134 @@
+<section class="admin-settings container py-4 ">
+	<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+		<div>
+			<p class="eyebrow text-uppercase mb-1">Control Panel</p>
+			<h2 class="heading mb-0">Account Settings</h2>
+			<p class="text-muted small mb-5">Edit admin info, profile picture, and password</p>
+		</div>
+	</div>
+
+	<div class="row g-4 ">
+		<div class="col-lg-4">
+			<div class="card panel h-100">
+				<div class="card-body d-flex flex-column align-items-center text-center">
+					<div class="avatar-frame mb-3">
+						<img [src]="avatarPreview || defaultAvatar" alt="avatar" class="avatar-img" />
+					</div>
+
+					<label class="btn btn-outline-secondary w-100 upload-btn mb-2">
+						<i class="bi bi-cloud-upload me-1"></i>
+						Choose Image
+						<input type="file" accept="image/*" (change)="onFileChange($event)" />
+					</label>
+
+					<button type="button" class="btn btn-primary w-100" (click)="uploadAvatar()" [disabled]="uploading || !selectedFile">
+						{{ uploading ? 'Uploading...' : 'Save Picture' }}
+					</button>
+
+					<small class="text-muted mt-3">Max 5MB | JPG / PNG / WEBP</small>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-8">
+			<div class="card panel h-100">
+				<div class="card-body">
+					<div class="d-flex align-items-center justify-content-between mb-3">
+						<div>
+							<p class="eyebrow mb-1">Profile</p>
+							<h5 class="mb-0">Admin Information</h5>
+						</div>
+					@if (loadingProfile) {
+					<span class="badge bg-secondary">Loading...</span>
+					}
+                    </div> 
+					<form class="row g-3" [formGroup]="profileForm" (ngSubmit)="submitProfile()">
+						<div class="col-md-6">
+							<label class="form-label">Full Name</label>
+							<input type="text" class="form-control" placeholder="Enter your name" formControlName="name" />
+						@if (pf['name'].touched && pf['name'].invalid) {
+						<div class="text-danger small">
+							Name must be at least 3 characters
+						</div>
+						}
+						</div>
+
+						<div class="col-md-6">
+							<label class="form-label">Email</label>
+							<input type="email" class="form-control" placeholder="admin@example.com" formControlName="email" />
+						@if (pf['email'].touched && pf['email'].invalid) {
+						<div class="text-danger small">Enter a valid email</div>
+						}
+						</div>
+
+						<div class="col-md-6">
+							<label class="form-label">Phone</label>
+							<input type="tel" class="form-control" placeholder="01xxxxxxxxx" formControlName="phone" />
+						@if (pf['phone'].touched && pf['phone'].invalid) {
+						<div class="text-danger small">Please enter a valid Egyptian number</div>
+						}
+						</div>
+
+						<div class="col-md-6">
+							<label class="form-label">Address</label>
+							<input type="text" class="form-control" placeholder="Address" formControlName="address" />
+						</div>
+
+						<div class="col-12 mt-2 d-flex justify-content-end gap-2">
+							<button type="button" class="btn btn-outline-secondary" (click)="profileForm.reset()">Cancel</button>
+							<button type="submit" class="btn btn-primary" [disabled]="savingProfile || profileForm.invalid">
+								{{ savingProfile ? 'Saving...' : 'Save Changes' }}
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card panel mt-4">
+		<div class="card-body">
+			<div class="d-flex align-items-center justify-content-between mb-3">
+				<div>
+						<p class="eyebrow mb-1">Security</p>
+						<h5 class="mb-0">Update Password</h5>
+				</div>
+				<span class="badge bg-light text-dark">Tip: Use a strong password</span>
+			</div>
+
+			<form class="row g-3" [formGroup]="passwordForm" (ngSubmit)="submitPassword()">
+				<div class="col-md-4">
+					<label class="form-label">Current Password</label>
+					<input type="password" class="form-control" placeholder="••••••" formControlName="oldPassword" />
+					@if (pwf['oldPassword'].touched && pwf['oldPassword'].invalid) {
+					<div class="text-danger small">Required</div>
+					}
+				</div>
+
+				<div class="col-md-4">
+					<label class="form-label">New Password</label>
+					<input type="password" class="form-control" placeholder="••••••" formControlName="newPassword" />
+					@if (pwf['newPassword'].touched && pwf['newPassword'].invalid) {
+					<div class="text-danger small">At least 6 characters</div>
+					}
+				</div>
+
+				<div class="col-md-4">
+					<label class="form-label">Confirm Password</label>
+					<input type="password" class="form-control" placeholder="••••••" formControlName="confirmPassword" />
+					@if (passwordForm.hasError('passwordMismatch') && pwf['confirmPassword'].touched) {
+					<div class="text-danger small">
+						Passwords do not match
+					</div>
+					}
+				</div>
+
+				<div class="col-12 d-flex justify-content-end gap-2 mt-2">
+					<button type="submit" class="btn btn-primary" [disabled]="changingPassword || passwordForm.invalid">
+						{{ changingPassword ? 'Updating...' : 'Change Password' }}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

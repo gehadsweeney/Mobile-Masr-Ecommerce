@@ -1,0 +1,143 @@
+/* Pagination */
+.mos-pagination-wrapper {
+  padding: 30px 0;
+}
+
+.mos-pagination .pagination {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mos-pagination .page-item {
+  list-style: none;
+}
+
+.mos-pagination .page-link {
+  padding: 10px 18px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  color: #495057;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mos-pagination .page-link:hover:not(.disabled .page-link) {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.mos-pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.mos-pagination .page-item.disabled .page-link {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: #e9ecef;
+  color: #6c757d;
+  pointer-events: auto;
+  /* keep visible and show not-allowed cursor */
+}
+
+.mos-pagination .page-item.disabled .page-link:hover {
+  background-color: #e9ecef;
+  color: #6c757d;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Innovative look: number circles and pill navs */
+.mos-pagination .page-link.page-number {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border-color: transparent;
+  background: #f3f6f9;
+}
+
+.mos-pagination .page-item.active .page-link.page-number {
+  background: #007bff;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.35);
+}
+
+.mos-pagination .page-link.page-nav {
+  border-radius: 999px;
+  background: #fff;
+  border-color: #e7eaee;
+}
+
+.mos-pagination .page-ellipsis {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+@media (max-width: 766px) {
+  .mos-pagination .page-link {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile responsive - icon only navigation */
+@media (max-width: 576px) {
+  .mos-pagination .pagination {
+    gap: 6px;
+  }
+
+  .mos-pagination .page-link {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Hide text, show icons only */
+  .mos-pagination .page-nav-text {
+    display: none;
+  }
+
+  .mos-pagination .page-nav-icon {
+    display: inline;
+    font-size: 18px;
+  }
+
+  .mos-pagination .page-link.page-nav {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  .mos-pagination .page-link.page-number {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Desktop - hide icons, show text */
+@media (min-width: 577px) {
+  .mos-pagination .page-nav-icon {
+    display: none;
+  }
+
+  .mos-pagination .page-nav-text {
+    display: inline;
+  }
+}

@@ -1,0 +1,44 @@
+<!-- Loader -->
+@if (isLoading) {
+<app-loader></app-loader>
+} @else {
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="abd-Prod-Container">
+        <!-- ====================== Header ================== -->
+        <div
+            class="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row gap-3">
+            <div class="abd-Prod-Header">
+                <h2>{{ isEditMode ? 'Edit Product' : 'Add New Product' }}</h2>
+                <p>{{ isEditMode ? 'Update the information below to edit the product.' :
+                    'Fill in the information below to add a new product.' }}</p>
+            </div>
+            <div class="abd-Prod-Controls">
+                <button type="button" class="btn-guide " (click)="openGuide()">
+                    <i class="bi bi-info-circle"></i> Category Fields Guide
+                </button>
+                <button type="submit" class="btn-save" [disabled]="productForm.invalid">
+                    {{ isEditMode ? 'Update Product' : 'Save Product' }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ===================Form Sections================== -->
+    <div class="abd-Prod-Form row g-3">
+        <div class="col-12 col-lg-8">
+            <app-general-info [group]="generalInfoGroup"></app-general-info>
+            <app-technical-spec [group]="technicalSpecGroup"></app-technical-spec>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="d-flex flex-column gap-3">
+                <app-pricing-and-inventory [group]="pricingAndInventoryGroup"></app-pricing-and-inventory>
+                <app-product-images [group]="productImagesGroup"></app-product-images>
+            </div>
+        </div>
+    </div>
+</form>
+}
+
+<!-- Category Fields Guide Modal -->
+@if (showGuide) {
+<app-category-fields-guide (close)="closeGuide()"></app-category-fields-guide>
+}

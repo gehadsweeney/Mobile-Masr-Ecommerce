@@ -1,0 +1,114 @@
+<div class="ven-add-container">
+    <div class="ven-add-wrapper">
+        <div class="ven-form-header">
+            <h2>{{ editing ? 'Edit Vendor' : 'Add New Vendor' }}</h2>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" class="ven-form">
+            <!-- Vendor Name -->
+            <div class="ven-form-group">
+                <label for="vendorName" class="ven-form-label">
+                    <span class="ven-required">*</span> Vendor Name
+                </label>
+                <input id="vendorName" type="text" class="form-control" formControlName="name"
+                    placeholder="e.g., Cairo Gadgets"
+                    [class.is-invalid]="form.get('name')?.invalid && (form.get('name')?.touched || submitted)" />
+                @if (form.get('name')?.invalid && (form.get('name')?.touched || submitted)) {
+                <div class="ven-error-message">
+                    @if (form.get('name')?.errors?.['required']) { <small>Name is required</small> }
+                    @if (form.get('name')?.errors?.['minlength']) { <small>Must be at least 3 characters</small> }
+                </div>
+                }
+            </div>
+
+            <!-- Phone -->
+            <div class="ven-form-group">
+                <label for="vendorPhone" class="ven-form-label"><span class="ven-required">*</span> Phone
+                    (Egypt)</label>
+                <input id="vendorPhone" type="tel" class="form-control" formControlName="phone"
+                    placeholder="01XXXXXXXXX"
+                    [class.is-invalid]="form.get('phone')?.invalid && (form.get('phone')?.touched || submitted)" />
+                @if (form.get('phone')?.invalid && (form.get('phone')?.touched || submitted)) {
+                <div class="ven-error-message">
+                    @if (form.get('phone')?.errors?.['required']) { <small>Phone is required</small> }
+                    @if (form.get('phone')?.errors?.['pattern']) { <small>Phone must match Egyptian format</small> }
+                </div>
+                }
+            </div>
+
+            <!-- Address -->
+            <div class="ven-form-group">
+                <label for="vendorAddress" class="ven-form-label"><span class="ven-required">*</span> Address</label>
+                <input id="vendorAddress" type="text" class="form-control" formControlName="address"
+                    placeholder="Vendor address"
+                    [class.is-invalid]="form.get('address')?.invalid && (form.get('address')?.touched || submitted)" />
+                @if (form.get('address')?.invalid && (form.get('address')?.touched || submitted)) {
+                <div class="ven-error-message">
+                    @if (form.get('address')?.errors?.['required']) { <small>Address is required</small> }
+                    @if (form.get('address')?.errors?.['minlength']) { <small>Must be at least 3 characters</small> }
+                </div>
+                }
+            </div>
+
+            <!-- Vendor Image -->
+            <div class="ven-form-group">
+                <label for="vendorImage" class="ven-form-label">
+                    <span class="ven-required">*</span> Vendor Image
+                </label>
+                <div class="ven-image-upload">
+                    <input #fileInput id="vendorImage" type="file" class="ven-file-input" accept="image/*"
+                        (change)="onImageSelected($event)" />
+                    <div class="ven-upload-content" (click)="fileInput.click()">
+                        <i class="bi bi-cloud-upload"></i>
+                        <p>Drag and drop your image here</p>
+                        <span class="ven-or-text">or</span>
+                        <button type="button" class="ven-btn-browse"
+                            (click)="$event.stopPropagation(); fileInput.click()">
+                            Browse photo
+                        </button>
+                    </div>
+                </div>
+                @if (uploading) {
+                <small>Uploading image...</small>
+                }
+                @if (!imageUrl && (submitted || form.touched)) {
+                <div class="ven-error-message">
+                    <small>Image is required</small>
+                </div>
+                }
+            </div>
+
+            <!-- Image Preview -->
+            @if (imagePreview) {
+            <div class="ven-image-preview-section">
+                <div class="ven-preview-header">
+                    <h6>Preview</h6>
+                    <button type="button" class="ven-btn-remove" (click)="removeImage()" title="Remove image">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                </div>
+                <div class="ven-image-preview">
+                    <img [src]="imagePreview" alt="Vendor preview" />
+                </div>
+            </div>
+            }
+
+            <!-- Actions -->
+            <div class="ven-form-actions">
+                <button type="submit" class="btn btn-primary ven-btn-submit"
+                    [disabled]="submitting || uploading || form.invalid || !imageUrl || (editing && !hasChanges())">
+                    @if (submitting) {
+                    <span class="spinner-border spinner-border-sm me-2"></span>
+                    {{ editing ? 'Updating...' : 'Adding...' }}
+                    } @else {
+                    {{ editing ? 'Update Vendor' : 'Add Vendor' }}
+                    }
+                </button>
+                <button type="button" class="btn btn-outline-secondary"
+                    (click)="form.reset({ rating: 0 }); removeImage()">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

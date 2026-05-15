@@ -1,0 +1,109 @@
+<div class="admin-ai-container">
+
+  <!-- Header -->
+  <div class="ai-header">
+    <div class="ai-header-icon">🤖</div>
+    <div>
+      <h2>AI Analytics Assistant</h2>
+      <p>
+        Smart insights about sales, inventory, and customers
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="ai-content">
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+
+      <div
+        *ngFor="let msg of messages"
+        class="message"
+        [ngClass]="msg.role"
+      >
+        <!-- AI Avatar -->
+        <div class="avatar ai" *ngIf="msg.role === 'assistant'">
+          🤖
+        </div>
+
+        <!-- Message Bubble -->
+        <div
+          class="message-content"
+          [attr.dir]="msg.dir"
+          [ngClass]="{ rtl: msg.dir === 'rtl' }"
+        >
+          <div class="bubble" [innerHTML]="msg.content"></div>
+          <span class="message-time">
+            {{ msg.timestamp | date:'shortTime' }}
+          </span>
+        </div>
+
+        <!-- User Avatar -->
+        <div class="avatar user" *ngIf="msg.role === 'user'">
+          <img [src]="userProfileImage" alt="User" class="avatar-image">
+        </div>
+      </div>
+
+      <!-- Typing -->
+      <div *ngIf="loading" class="message assistant">
+        <div class="avatar ai">🤖</div>
+        <div class="message-content">
+          <div class="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div *ngIf="error" class="message error">
+        <div class="message-content">
+          ⚠️ {{ error }}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Input -->
+    <div class="ai-input-area">
+      <textarea
+        [(ngModel)]="question"
+        (keypress)="handleKeyPress($event)"
+        [disabled]="loading"
+        placeholder="Ask about sales, inventory, or customers..."
+      ></textarea>
+
+      <div class="input-actions">
+        <button
+          class="btn-send"
+          (click)="sendQuestion()"
+          [disabled]="loading || !question.trim()"
+        >
+          ➤
+        </button>
+        <button
+          class="btn-clear"
+          (click)="clearChat()"
+          [disabled]="loading"
+        >
+          🗑
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Examples -->
+  <div class="ai-examples">
+    <h5>💡 Example Questions</h5>
+    <div class="examples-grid">
+      <button (click)="question='What were the total sales last week?'; sendQuestion()">📊 Weekly sales</button>
+      <button (click)="question='Which products are low on stock?'; sendQuestion()">⚠️ Low stock</button>
+      <button (click)="question='Top 3 products this month?'; sendQuestion()">🏆 Top sellers</button>
+      <button (click)="question='How many new customers joined?'; sendQuestion()">👥 New customers</button>
+      <button (click)="question='Give me a performance overview'; sendQuestion()">📈 Performance report</button>
+      <button (click)="question='Which categories are performing best?'; sendQuestion()">📦 Hot categories</button>
+    </div>
+  </div>
+
+</div>
+

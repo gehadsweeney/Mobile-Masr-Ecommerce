@@ -1,0 +1,16 @@
+.abd-Cart-item {
+    .abd-itemDelete {
+        font-size: 1.6rem;
+        color: var(--red-color);
+        transition: all 0.3s ease;
+        /* padding: 0.5rem; */
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--red-color-light);
+        }
+    }
+}

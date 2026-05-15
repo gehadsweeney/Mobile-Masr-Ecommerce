@@ -1,0 +1,24 @@
+.abd-ToggleTheme {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--bg-body);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  //   box-shadow: 0 2px 8px var(--shadow-sm);
+  border: 1px solid var(--border-light);
+
+  &:hover {
+    background-color: var(--color-orange-light);
+  }
+}
+
+.abd-themeIcon {
+  font-size: 2rem;
+  color: var(--color-orange);
+  transition: transform 0.3s ease;
+
+  .abd-ToggleTheme:hover & {
+    transform: rotate(20deg);
+  }
+}

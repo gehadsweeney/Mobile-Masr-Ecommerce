@@ -1,0 +1,120 @@
+.abd-checkout-form {
+    background-color: var(--white-color);
+    /* border-radius: 12px; */
+    /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); */
+    /* max-width: 600px; */
+}
+
+.abd-checkout-form h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--orange-color, #ff6b35);
+    padding-bottom: 1rem;
+}
+
+.abd-checkout-form .form-label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.abd-checkout-form .form-control {
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    height: 45px;
+    padding: 0.6rem 1rem;
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+    background-color: #fafafa;
+}
+
+.abd-checkout-form textarea.form-control {
+    height: 100px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.abd-checkout-form .form-control:focus {
+    border-color: var(--orange-color, #ff6b35);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    outline: none;
+}
+
+.abd-checkout-form .form-control.is-invalid {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+.abd-checkout-form .form-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.abd-checkout-form .text-danger {
+    font-size: 1.2rem;
+    margin-top: 0.4rem;
+    color: #dc3545;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.abd-checkout-form .btn-primary {
+    width: 100%;
+    background-color: var(--orange-color);
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+    height: 50px;
+}
+
+.abd-checkout-form .btn-primary:hover {
+    background-color: var(--orange-color-2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.abd-checkout-form .btn-primary:active {
+    transform: translateY(0);
+}
+
+.abd-checkout-form .btn-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .abd-checkout-form {
+        padding: 1.5rem !important;
+    }
+
+    .abd-checkout-form h3 {
+        font-size: 1.8rem;
+    }
+
+    .abd-checkout-form .form-label {
+        font-size: 1.3rem;
+    }
+
+    .abd-checkout-form .form-control {
+        font-size: 1.3rem;
+        height: 42px;
+    }
+
+    .abd-checkout-form .btn-primary {
+        font-size: 1.5rem;
+        height: 48px;
+    }
+}

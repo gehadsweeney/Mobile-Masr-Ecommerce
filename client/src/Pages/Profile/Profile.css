@@ -1,0 +1,126 @@
+.profile-page-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+}
+
+.profile-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.profile-sidebar {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #555;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: all 180ms ease;
+  background: transparent;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+.profile-nav-link:hover {
+  background-color: #f5f7fa;
+  color: var(--orange-color, #fe5100);
+}
+
+.profile-nav-link.active {
+  background-color: var(--orange-color, #fe5100);
+  color: #fff;
+}
+
+.profile-nav-link.logout-btn {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+  color: #d9534f;
+}
+
+.profile-nav-link.logout-btn:hover {
+  background-color: #fcebea;
+  color: #c9302c;
+}
+
+.profile-nav-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+/* Content Area */
+.profile-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-height: 500px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .profile-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-sidebar {
+    position: static;
+  }
+
+  .profile-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .profile-nav-link {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-page-container {
+    padding: 1.5rem 0;
+  }
+
+  .profile-content {
+    padding: 1.5rem;
+  }
+
+  .profile-nav-link {
+    flex: 1 1 100%;
+    font-size: 1.4rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .profile-nav-icon {
+    font-size: 1.6rem;
+  }
+}

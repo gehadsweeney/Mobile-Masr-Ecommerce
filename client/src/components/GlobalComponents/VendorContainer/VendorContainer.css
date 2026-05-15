@@ -1,0 +1,15 @@
+.abd-InfoVendor {
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+
+.abd-InfoVendor .abd-InfoVendorImage {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 0.2rem solid var(--border-color);
+}

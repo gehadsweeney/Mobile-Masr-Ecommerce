@@ -1,0 +1,84 @@
+.reh-review-card {
+    position: relative;
+    /* Make the card responsive inside a slide: full width of slide but capped */
+    width: 100%;
+    max-width: 40rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    border: 0.3rem solid var(--border-color);
+    border-radius: 3rem;
+    background-color: var(--white-color);
+    /* make all cards stretch to the same height inside slides */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.reh-review-card::before {
+    content: "";
+    position: absolute;
+    inset: -0.7rem;
+    /* background-color: var(--orange-color);\ */
+    background: linear-gradient(115deg, transparent 45%, var(--orange-color) 55%);
+    border-radius: 3rem;
+    z-index: -1;
+}
+
+.reh-review-card h2.userName {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    margin-left: 4rem;
+
+    width: fit-content;
+    color: var(--orange-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid var(--orange-color);
+}
+
+.reh-review-card p.content {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--muted-text);
+
+    line-height: 1.6;
+    height: calc(1.6em * 3);
+    /* force exactly 3 lines worth of height */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    white-space: normal;
+}
+
+.reh-review-card .rating {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--yellow-color-light);
+    width: fit-content;
+    border-radius: 2rem;
+}
+
+.reh-review-card .quoteIcon {
+    position: absolute;
+    top: -1.7rem;
+    left: -1.7rem;
+    background-color: var(--white-color);
+    padding: 1rem;
+    border-radius: 50%;
+    border: 0.3rem solid var(--border-color);
+    /* box-shadow: 0px 0px 1rem var(--border-color); */
+}
+
+.reh-review-card .userIcon {
+    position: absolute;
+    bottom: -1.7rem;
+    right: -1.7rem;
+    background-color: var(--white-color);
+    padding: 1rem;
+    border-radius: 50%;
+    border: 0.7rem solid var(--orange-color);
+    /* box-shadow: 0px 0px 1rem var(--border-color); */
+}

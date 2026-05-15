@@ -1,0 +1,290 @@
+.mos-filter-panel {
+  width: 100%;
+  max-width: 300px;
+  background: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px var(--shadow-color-2);
+  padding: 16px;
+  position: sticky;
+  top: 20px;
+  /* stick with slight offset from top */
+  align-self: flex-start;
+  /* stay within parent container */
+  max-height: calc(100vh - 40px);
+  /* leave space for top/bottom margins */
+  overflow-y: auto;
+  /* scroll inside the filter when content exceeds */
+}
+
+@media (max-width: 991.98px) {
+  .mos-filter-panel {
+    position: static;
+    /* normal flow on small screens */
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+.mos-filter-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.mos-filter-panel__icon {
+  color: var(--orange-color);
+}
+
+.mos-filter-search-badge {
+  background: var(--orange-color);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px #667eea4d;
+  /* color: var(--white-color); */
+}
+
+.mos-search-badge-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.mos-badge-icon {
+  font-size: 16px;
+}
+
+.mos-badge-text {
+  font-weight: 600;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.mos-filter-panel__groups {
+  margin-top: 6px;
+}
+
+.mos-filter-group {
+  border-bottom: 1px solid var(--container-bg);
+}
+
+.mos-filter-group:last-child {
+  border-bottom: none;
+}
+
+.mos-filter-group__toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--black-color);
+  gap: 12px;
+  direction: inherit;
+  flex-direction: row-reverse;
+}
+
+.mos-filter-group__title {
+  flex: 1;
+  text-align: start;
+}
+
+.mos-filter-group__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+}
+
+/* Flip arrow in RTL */
+[dir="rtl"] .mos-filter-group__arrow {
+  transform: scaleX(-1);
+}
+
+.mos-filter-group__toggle:hover {
+  background: var(--container-bg);
+  border-radius: 8px;
+}
+
+.mos-filter-group__count {
+  margin-inline-start: 8px;
+  font-size: 12px;
+  background: var(--green-color-light);
+  color: var(--green-color);
+  border-radius: 999px;
+  padding: 2px 8px;
+  flex-shrink: 0;
+}
+
+.mos-filter-group__body {
+  padding: 6px 6px 12px 28px;
+}
+
+.mos-filter-group__body.is-list {
+  max-height: 150px;
+  overflow-y: auto;
+  /* scrollbar-width: thin; */
+}
+
+.mos-filter-group__body.is-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.mos-filter-group__body.is-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mos-filter-group__body.is-list::-webkit-scrollbar-thumb {
+  background: var(--muted-text-2);
+  border-radius: 6px;
+}
+
+.mos-filter-group__body.is-list::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-text-2);
+}
+
+.mos-filter-group__body.no-scroll {
+  overflow: visible;
+}
+
+.mos-filter-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.mos-filter-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Color filter with circles */
+.mos-filter-check.mos-filter-color {
+  gap: 10px;
+}
+
+.mos-color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.mos-price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.mos-price-inputs input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.mos-price-dash {
+  color: var(--muted-text-2);
+}
+
+.mos-double-range {
+  position: relative;
+  height: 34px;
+  display: grid;
+  align-items: center;
+}
+
+.mos-double-range input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.mos-double-range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: var(--green-color);
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.mos-double-range input[type="range"]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: var(--green-color);
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.mos-double-range__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.mos-filter-panel__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.mos-btn-apply {
+  background: var(--orange-color-2);
+  color: var(--white-color);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.mos-btn-apply:hover {
+  filter: brightness(0.95);
+}
+
+.mos-btn-clear {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white-color);
+  color: var(--red-color);
+  border: 1px solid var(--red-color-light);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.mos-btn-clear:hover {
+  background: var(--cart-color);
+}

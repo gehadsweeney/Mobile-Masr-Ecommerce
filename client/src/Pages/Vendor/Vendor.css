@@ -1,0 +1,8 @@
+.reh-vendor-products-row {
+  margin-top: 20px;
+}
+
+/* Layout is handled by Bootstrap grid; keep small helper rules only */
+.reh-text-center {
+  text-align: center;
+}

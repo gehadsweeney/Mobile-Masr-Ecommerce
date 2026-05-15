@@ -1,0 +1,141 @@
+.reh-form-card {
+  max-width: 520px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.reh-field {
+  margin-bottom: 1.6rem;
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+
+    span {
+      color: var(--color-danger);
+    }
+  }
+
+  input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-input);
+    color: var(--text-primary);
+  }
+}
+
+/* Upload box */
+.reh-upload-box {
+  position: relative;
+  border: 2px dashed var(--color-orange);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  background: var(--bg-soft);
+
+  input[type='file'] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
+
+.reh-upload-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .icon {
+    font-size: 2rem;
+    color: var(--color-orange);
+  }
+
+  p {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  span {
+    color: var(--text-muted);
+  }
+
+  button {
+    margin: auto;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: none;
+    background: var(--color-orange);
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.image-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  background: var(--bg-input);
+  color: var(--text-primary);
+
+  button {
+    background: none;
+    border: none;
+    color: var(--color-orange);
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+.reh-error {
+  color: var(--color-danger);
+  font-size: 0.8rem;
+}
+
+.reh-info {
+  font-size: 0.85rem;
+  color: var(--color-orange);
+}
+
+/* Actions */
+.reh-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .primary {
+    background: #64748b;
+    color: #fff;
+    border: none;
+  }
+
+  .secondary {
+    background: transparent;
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+  }
+}

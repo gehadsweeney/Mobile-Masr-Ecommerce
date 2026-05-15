@@ -1,0 +1,33 @@
+.abd-Cart-item {
+    .abd-itemQuantity {
+        font-size: 1.6rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: var(--cart-color);
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+
+        .abd-QuantityAction {
+            /* padding: 0.5rem; */
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .abd-QuantityAction:hover {
+            cursor: pointer;
+            background-color: var(--gray-color-light);
+            /* color: var(--orange-color); */
+        }
+
+        .abd-QuantityValue {
+            font-size: 1.6rem;
+            font-weight: 600;
+            width: 2.5rem;
+            text-align: center;
+        }
+    }
+}

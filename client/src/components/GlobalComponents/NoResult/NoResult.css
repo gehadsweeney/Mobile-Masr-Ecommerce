@@ -1,0 +1,14 @@
+.noResult {
+    flex-direction: column;
+    padding-block: 50px;
+
+    img {
+        width: 20%;
+    }
+
+    .noResultTitle {
+        font-size: 40px;
+        font-weight: 700;
+        color: #21B9D6;
+    }
+}

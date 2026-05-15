@@ -1,0 +1,194 @@
+.abd-order-success-container {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.abd-success-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    max-width: 600px;
+    text-align: center;
+}
+
+.abd-success-icon {
+    font-size: 5rem;
+    color: #28a745;
+    margin-bottom: 1.5rem;
+    animation: scaleIn 0.5s ease-in-out;
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.abd-success-card h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.abd-success-message {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.abd-order-details {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: left;
+}
+
+.abd-order-details h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.abd-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.4rem;
+}
+
+.abd-detail-row:last-child {
+    border-bottom: none;
+}
+
+.abd-detail-row span:first-child {
+    color: #666;
+    font-weight: 500;
+}
+
+.abd-detail-value {
+    color: #333;
+    font-weight: 600;
+}
+
+.abd-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.abd-badge-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.abd-badge-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.abd-success-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.abd-success-actions .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.abd-success-actions .btn-primary {
+    background-color: var(--orange-color, #ff6b35);
+    border: none;
+}
+
+.abd-success-actions .btn-primary:hover {
+    background-color: var(--orange-color-2, #e65a2b);
+    transform: translateY(-2px);
+}
+
+.abd-success-actions .btn-outline-secondary {
+    background-color: transparent;
+    border: 2px solid #6c757d;
+    color: #6c757d;
+}
+
+.abd-success-actions .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.abd-loading,
+.abd-error-box {
+    text-align: center;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.abd-loading {
+    font-size: 1.6rem;
+    color: #666;
+}
+
+.abd-error-box h2 {
+    color: #dc3545;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.abd-error-box p {
+    font-size: 1.4rem;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .abd-success-card {
+        padding: 2rem;
+    }
+
+    .abd-success-card h1 {
+        font-size: 2rem;
+    }
+
+    .abd-success-icon {
+        font-size: 4rem;
+    }
+
+    .abd-success-actions {
+        flex-direction: column;
+    }
+
+    .abd-success-actions .btn {
+        width: 100%;
+    }
+
+    .abd-detail-row {
+        font-size: 1.3rem;
+    }
+}

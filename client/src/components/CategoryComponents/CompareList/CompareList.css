@@ -1,0 +1,102 @@
+/* ==================compareList===================== */
+
+.abd-compareList {
+    position: fixed;
+    right: 2rem;
+    bottom: 10rem;
+    z-index: 1000;
+
+    * {
+        transition: all 0.3s ease;
+    }
+}
+
+[dir="rtl"].abd-compareList {
+    right: auto !important;
+    left: 2rem !important;
+}
+
+.abd-compareList .abd-compareListBtn {
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.abd-compareList .abd-compareListBtn:hover {
+    cursor: pointer;
+    background-color: var(--orange-color-2);
+    /* box-shadow: 0 0.5rem 1rem var(--shadow-color-2); */
+    transform: translateY(-0.3rem);
+
+}
+
+.abd-compareList .abd-numOfCompared {
+    background-color: var(--white-color);
+    color: var(--black-color);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.abd-compareList .abd-compareListItems {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 0.4rem);
+    background: var(--white-color);
+    color: var(--black-color);
+    border: 1px solid var(--border-color);
+    width: 30rem;
+    /* padding: 0.4rem 0.6rem; */
+    border-radius: 1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    font-size: 0.85rem;
+    /* white-space: nowrap; */
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .15s ease, transform .18s ease;
+    z-index: 1001;
+}
+
+[dir="rtl"].abd-compareList .abd-compareListItems {
+    right: auto;
+    left: 0;
+}
+
+.abd-compareList .abd-compareListItems::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    right: 1rem;
+    width: 10px;
+    height: 10px;
+    background: var(--white-color);
+    transform: rotate(45deg);
+    transform-origin: center;
+    /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06); */
+    pointer-events: none;
+    border-radius: 0;
+    /* border-top: 1px solid rgba(0, 0, 0, 0.03); */
+    /* border-left: 1px solid rgba(0, 0, 0, 0.03); */
+}
+
+[dir="rtl"].abd-compareList .abd-compareListItems::after {
+    right: auto;
+    left: 1rem;
+}
+
+.abd-compareList .abd-compareListItems.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+}
+
+
+/* ############################################### */
+.abd-deleteCompareItemBtn {
+    cursor: pointer;
+}

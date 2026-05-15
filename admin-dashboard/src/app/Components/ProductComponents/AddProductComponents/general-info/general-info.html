@@ -1,0 +1,154 @@
+<div [formGroup]="group" class="abd-Prod-Section">
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <i class="fas fa-info-circle abd-section-icon"></i>
+        <h2 class="mb-0 abd-section-title">General Information</h2>
+    </div>
+    <!-- ========================================= -->
+    <div formGroupName="name">
+        <div class="mb-3">
+            <label class="abd-label">Product Name (English) <span class="text-danger">*</span></label>
+            <input formControlName="en" class="abd-input" placeholder="e.g. iPhone 15 Pro Max">
+            @if (group.get('name.en')?.invalid && group.get('name.en')?.touched) {
+            <div class="abd-error">
+                @if (group.get('name.en')?.errors?.['required']) {
+                <small>Product name in English is required</small>
+                }
+                @if (group.get('name.en')?.errors?.['minlength']) {
+                <small>Product name must be at least 3 characters</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3" dir="rtl">
+            <label class="abd-label">اسم المنتج (العربية) <span class="text-danger">*</span></label>
+            <input formControlName="ar" class="abd-input" placeholder="مثال: ايفون 15 برو ماكس">
+            @if (group.get('name.ar')?.invalid && group.get('name.ar')?.touched) {
+            <div class="abd-error">
+                @if (group.get('name.ar')?.errors?.['required']) {
+                <small>اسم المنتج بالعربية مطلوب</small>
+                }
+                @if (group.get('name.ar')?.errors?.['minlength']) {
+                <small>يجب أن يكون الاسم 3 أحرف على الأقل</small>
+                }
+            </div>
+            }
+        </div>
+    </div>
+
+    <div formGroupName="description">
+        <div class="mb-3">
+            <label class="abd-label">Description (English) <span class="text-danger">*</span></label>
+            <textarea formControlName="en" class="abd-textarea" rows="4"
+                placeholder="Enter product description in English"></textarea>
+            @if (group.get('description.en')?.invalid && group.get('description.en')?.touched) {
+            <div class="abd-error">
+                @if (group.get('description.en')?.errors?.['required']) {
+                <small>Description in English is required</small>
+                }
+                @if (group.get('description.en')?.errors?.['minlength']) {
+                <small>Description must be at least 3 characters</small>
+                }
+                @if (group.get('description.en')?.errors?.['maxlength']) {
+                <small>Description cannot exceed 1000 characters</small>
+                }
+            </div>
+            }
+        </div>
+        <div class="mb-3" dir="rtl">
+            <label class="abd-label">الوصف (العربية) <span class="text-danger">*</span></label>
+            <textarea formControlName="ar" class="abd-textarea" rows="4"
+                placeholder="أدخل وصف المنتج بالعربية"></textarea>
+            @if (group.get('description.ar')?.invalid && group.get('description.ar')?.touched) {
+            <div class="abd-error">
+                @if (group.get('description.ar')?.errors?.['required']) {
+                <small>الوصف بالعربية مطلوب</small>
+                }
+                @if (group.get('description.ar')?.errors?.['minlength']) {
+                <small>يجب أن يكون الوصف 3 أحرف على الأقل</small>
+                }
+                @if (group.get('description.ar')?.errors?.['maxlength']) {
+                <small>لا يمكن أن يتجاوز الوصف 1000 حرف</small>
+                }
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Category <span class="text-danger">*</span></label>
+            <div class="abd-select-wrapper">
+                <select formControlName="category" class="abd-select">
+                    <option value="">Select Category...</option>
+                    @for (category of categories; track category._id) {
+                    <option [value]="category._id">{{ category.name }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+            @if (group.get('category')?.invalid && group.get('category')?.touched) {
+            <div class="abd-error">
+                <small>Please select a category</small>
+            </div>
+            }
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Brand <span class="text-danger">*</span></label>
+            <div class="abd-select-wrapper">
+                <select formControlName="brand" class="abd-select">
+                    <option value="">Select Brand...</option>
+                    @for (brand of brands; track brand._id) {
+                    <option [value]="brand._id">{{ brand.name }}</option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+            @if (group.get('brand')?.invalid && group.get('brand')?.touched) {
+            <div class="abd-error">
+                <small>Please select a brand</small>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="row g-3 mt-3">
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Condition</label>
+            <div class="abd-select-wrapper" formGroupName="condition">
+                <select formControlName="en" (change)="onConditionChange($event)" class="abd-select">
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="abd-label">Color</label>
+            <div class="abd-select-wrapper">
+                <select formControlName="color" class="abd-select abd-color-select">
+                    <option value="">Select Color...</option>
+                    @for (color of colors; track color.name) {
+                    <option [value]="color.name" [style.color]="color.value">
+                        <span class="color-dot" [style.background-color]="color.value"></span>
+                        {{ color.name }}
+                    </option>
+                    }
+                </select>
+                <i class="fas fa-chevron-down abd-select-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <label class="abd-label">Vendor</label>
+        <div class="abd-select-wrapper">
+            <select formControlName="vendor" class="abd-select">
+                <option value="">Select Vendor...</option>
+                @for (vendor of vendors; track vendor._id) {
+                <option [value]="vendor._id">{{ vendor.name }}</option>
+                }
+            </select>
+            <i class="fas fa-chevron-down abd-select-icon"></i>
+        </div>
+    </div>
+</div>

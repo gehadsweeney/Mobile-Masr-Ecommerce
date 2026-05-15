@@ -1,0 +1,188 @@
+.account-info-container {
+  max-width: 800px;
+}
+
+.account-info-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.account-info-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.info-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.info-value {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.account-edit-form-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.form-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  transition: border-color 180ms ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--orange-color, #fe5100);
+  box-shadow: 0 0 0 3px rgba(254, 81, 0, 0.1);
+}
+
+.form-group input.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-group input:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.text-muted {
+  display: block;
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 1rem;
+  top: 44px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 1.6rem;
+}
+
+[dir="rtl"] .password-toggle-icon {
+  right: auto;
+  left: 1rem;
+}
+
+.password-toggle-icon:hover {
+  color: var(--orange-color, #fe5100);
+}
+
+.btn-geh {
+  background-color: var(--orange-color, #fe5100);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.btn-geh:hover {
+  background-color: var(--orange-color-2, #e04800);
+}
+
+.btn-geh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-outline-geh {
+  background-color: transparent;
+  color: var(--orange-color, #fe5100);
+  border: 2px solid var(--orange-color, #fe5100);
+  padding: 0.75rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.btn-outline-geh:hover {
+  background-color: var(--orange-color, #fe5100);
+  color: #fff;
+}
+
+.account-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 576px) {
+  .account-info-title {
+    font-size: 2rem;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .form-section-title {
+    font-size: 1.8rem;
+  }
+}

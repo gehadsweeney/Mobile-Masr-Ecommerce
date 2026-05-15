@@ -1,0 +1,245 @@
+.reviews-container {
+  padding: 2rem;
+  min-height: 100vh;
+  background: var(--bg-container);
+  border-radius: 2rem;
+}
+
+/* STATES */
+.state {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+
+  &.error {
+    color: var(--color-danger);
+    font-weight: 600;
+  }
+
+  &.empty {
+    font-size: 1.2rem;
+    opacity: 0.65;
+  }
+
+  &.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+/* Spinner */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--color-info);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* GRID */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.6rem;
+}
+
+/* CARD */
+.review-card {
+  background: var(--bg-card);
+  border-radius: 1.4rem;
+  padding: 1.6rem;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px var(--shadow-md);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  .reh-review-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px var(--shadow-md);
+  }
+}
+
+/* HEADER */
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--color-orange);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* INFO */
+.info {
+  h4 {
+    margin: 0;
+    font-size: 1.4rem; // تكبير اسم المستخدم
+    color: var(--text-primary);
+  }
+
+  .rating {
+    font-size: 0.95rem; // ممكن كمان نكبر شوية لو حبيتي
+    color: var(--color-orange);
+  }
+}
+
+/* COMMENT */
+.comment {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1.2rem;
+}
+
+/* FOOTER */
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem; // تكبير الخط للتاريخ والـ user info
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  padding-top: 0.75rem;
+  margin-top: auto;
+  gap: 0.5rem;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+  border: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: var(--color-danger-light);
+    transform: scale(1.05);
+  }
+}
+
+/* DARK MODE */
+body.dark {
+  .spinner {
+    border-color: var(--border-light);
+    border-top-color: var(--color-info);
+  }
+}
+/* Delete Confirm Popup */
+.delete-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+
+  .delete-box {
+    background: var(--bg-card);
+    padding: 2.5rem 3rem; // تكبير البادينج
+    border-radius: 10px; // زوايا أكبر
+    text-align: center;
+    width: 400px; // تكبير العرض
+    max-width: 90%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    height: auto;
+
+    p {
+      font-size: 1.2rem; // تكبير حجم النص
+      margin-bottom: 2rem;
+
+      strong {
+        color: #d32f2f;
+        font-size: 1.3rem; // تكبير اسم البراند
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-around;
+
+      button.confirm {
+        background-color: #d32f2f;
+        color: #fff;
+        border: none;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+
+      button.cancel {
+        background-color: #ccc;
+        color: #000;
+        border: none;
+        padding: 0.7rem 1.5rem; // تكبير الأزرار
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem; // تكبير الخط
+
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+}
+
+/* Animations */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

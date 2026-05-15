@@ -1,0 +1,71 @@
+<div class="login-overlay">
+  <div class="login-modal">
+    <div class="modal-left">
+      <div class="image-overlay">
+        <div class="brand-logo"><img src="https://res.cloudinary.com/dfigu6nnn/image/upload/v1766086961/freepik__talk__91013_hkdupu_c_crop_w_814_h_799_x_112_y_124-removebg-preview_dtfgyf.png" alt="" width="300px" height="300px"></div>
+        <h2 class="brand-title">Mobile Masr</h2>
+        <p class="brand-subtitle">Admin Dashboard</p>
+      </div>
+    </div>
+
+    <div class="modal-right">
+      <div class="form-container">
+        <div class="welcome-section">
+          <h1 class="welcome-title">Welcome Back! 👋</h1>
+          <p class="welcome-subtitle">Sign in to access the admin dashboard</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login-form">
+          <div class="form-group">
+            <label for="email" class="form-label">
+              Email Address
+            </label>
+            <input
+              id="email"
+              type="email"
+              class="form-input"
+              placeholder="admin@example.com"
+              formControlName="email"
+              [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+            />
+            @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+            <span class="error-message">
+              Please enter a valid email address
+            </span>
+            }
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              class="form-input"
+              placeholder="••••••••"
+              formControlName="password"
+              [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            />
+            @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <span class="error-message">
+              Password is required
+            </span>
+            }
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-icon">→</span>
+          </button>
+
+          <div class="info-box">
+            <i class="info-icon">⚠️</i>
+            <p><strong>Admin Access Only:</strong> You must have an administrator account to access the dashboard.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

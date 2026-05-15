@@ -1,0 +1,47 @@
+.abd-Navbar {
+    font-size: 1.3rem;
+    /* border-bottom: 0.2rem solid var(--border-color); */
+    box-shadow: 0px 0px 1rem var(--border-color);
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    width: 100%;
+    /* z-index: 1000; */
+    background-color: var(--white-color);
+}
+
+.abd-HeaderTop {
+    border-bottom: 0.2rem solid var(--border-color);
+}
+
+
+.abd-HeaderActions {
+    font-size: 1.6rem;
+}
+
+.abd-HeaderActions .abd-signIn {
+    border-inline: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.abd-Favorite,
+.abd-Cart {
+    position: relative;
+    color: var(--orange-color);
+    font-size: 2.5rem;
+}
+
+.abd-FavCounter,
+.abd-CartCounter {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.6rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    background-color: var(--orange-color);
+    width: 1.5rem;
+    height: 1.5rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}

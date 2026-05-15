@@ -1,0 +1,155 @@
+<div class="abd-sidebar" [class.collapsed]="isCollapsed">
+    <div class="toggleMenuContainer center" (click)="toggleSidebar()">
+        <i class="bi bi-list abd-sidebarToggleIcon"></i>
+    </div>
+    <div class="logo">
+        <app-logo></app-logo>
+    </div>
+    <ul class="nav-links abd-scrollable-menu d-flex flex-column gap-2">
+
+        
+        <!-- ==============================AI Analytics=================================== -->
+        <li>
+            <a class="d-flex gap-4 abd-sidebarLink" routerLink="/admin/ai-chat" routerLinkActive="active"
+                title="AI Analytics">
+                <i class="bi bi-robot"></i>
+                <span>AI Analytics</span>
+            </a>
+        </li>
+        <!-- ==============================Dashboard=================================== -->
+        <li>
+            <a class="d-flex gap-4 abd-sidebarLink" routerLink="/admin/dashboard" routerLinkActive="active"
+                title="Dashboard">
+                <i class="bi bi-columns-gap"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <!-- ==============================Products==================================== -->
+        <li class="accordion-item">
+            <a class="d-flex gap-4 abd-sidebarLink" data-bs-toggle="collapse" data-bs-target="#productsCollapse"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" title="Products">
+                <i class="bi bi-box-seam"></i>
+                <span>Products</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <div class="collapse" id="productsCollapse">
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/products"
+                    [queryParams]="{page:1}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    title="All Products">
+                    <i class="bi bi-list-ul"></i>
+                    <span class="d-block text-nowrap">All Product</span>
+                </a>
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/products/add"
+                    routerLinkActive="active" title="Add Product">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-block text-nowrap">Add Product</span>
+                </a>
+            </div>
+        </li>
+        <!-- ==============================Orders=================================== -->
+        <li>
+            <a class="d-flex gap-4 abd-sidebarLink" routerLink="/admin/orders" routerLinkActive="active" title="Orders">
+                <i class="bi bi-bag-check"></i>
+                <span>Orders</span>
+            </a>
+        </li>
+        <!-- ==============================Users=================================== -->
+        <li>
+            <a class="d-flex gap-4 abd-sidebarLink" routerLink="/admin/users" routerLinkActive="active" title="Users">
+                <i class="bi bi-people"></i>
+                <span>Users</span>
+            </a>
+        </li>
+
+        <!-- ==============================Reviews=================================== -->
+        <li>
+            <a class="d-flex gap-4 abd-sidebarLink" routerLink="/admin/reviews" routerLinkActive="active"
+                title="Reviews">
+                <i class="bi bi-chat-dots"></i>
+                <span>Reviews</span>
+            </a>
+        </li>
+
+
+        <!-- ==============================Vendors=================================== -->
+        <li class="accordion-item">
+            <a class="d-flex gap-4 abd-sidebarLink" data-bs-toggle="collapse" data-bs-target="#vendorsCollapse"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" title="Vendors">
+                <i class="bi bi-shop-window"></i>
+                <span>Vendors</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <div class="collapse" id="vendorsCollapse">
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/vendors"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="All Vendors">
+                    <i class="bi bi-list-ul"></i>
+                    <span class="d-block text-nowrap">All Vendors</span>
+                </a>
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/vendors/add"
+                    routerLinkActive="active" title="Add Vendor">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-block text-nowrap">Add Vendor</span>
+                </a>
+            </div>
+        </li>
+        <!-- ==============================Categories=================================== -->
+        <li class="accordion-item">
+            <a class="d-flex gap-4 abd-sidebarLink" data-bs-toggle="collapse" data-bs-target="#categoriesCollapse"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" title="Categories">
+                <i class="bi bi-tags"></i>
+                <span>Categories</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <div class="collapse" id="categoriesCollapse">
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/categories"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="All Categories">
+                    <i class="bi bi-list-ul"></i>
+                    <span class="d-block text-nowrap">All Categories</span>
+                </a>
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/categories/add"
+                    routerLinkActive="active" title="Add Category">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-block text-nowrap">Add Category</span>
+                </a>
+            </div>
+        </li>
+        <!-- ==============================Brands=================================== -->
+        <li class="accordion-item">
+            <a class="d-flex gap-4 abd-sidebarLink" data-bs-toggle="collapse" data-bs-target="#brandsCollapse"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" title="Brands">
+                <i class="bi bi-bookmark-star"></i>
+                <span>Brands</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <div class="collapse" id="brandsCollapse">
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/brands"
+                    routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" title="All Brands">
+                    <i class="bi bi-list-ul"></i>
+                    <span class="d-block text-nowrap">All Brands</span>
+                </a>
+                <a class="d-flex gap-4 abd-sidebarLink abd-submenu-link" routerLink="/admin/brands/add"
+                    routerLinkActive="active" title="Add Brand">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-block text-nowrap">Add Brand</span>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+    <hr class="abd-divider">
+
+    <div class="abd-bottom-links d-flex flex-column gap-2">
+        <!-- ==============================Settings=================================== -->
+        <a routerLink="/admin/settings" class="d-flex gap-4 abd-sidebarLink" title="Settings">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+        </a>
+
+        <!-- ==============================logout=================================== -->
+        <a (click)="logout()" class="d-flex gap-4 abd-sidebarLink abd-logout-link" title="Logout">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</div>
