@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ibrand } from '../Models/ibrand';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface BrandResponse {
   message?: string;

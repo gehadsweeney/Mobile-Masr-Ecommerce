@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Icategory } from '../Models/icategory';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 interface CategoryResponse {
   message?: string;
