@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { SiOpenai } from "react-icons/si";
 import { BsStars } from "react-icons/bs";
 import "./AskAiRecommendation.css";
 // import { useTranslation } from "react-i18next";
@@ -91,7 +90,7 @@ function AskAiRecommendation({ compareItems }) {
             className="abd-ai-form-submit mx-auto"
             title="Please select once of criteria"
           >
-            <SiOpenai className="abd-askAiBestItem-form-icon" />
+            <BsStars className="abd-askAiBestItem-form-icon" />
 
             {!selectedCriteria
               ? "Please select a criterion"
